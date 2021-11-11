@@ -9,6 +9,7 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+    console.log(event)
     const wxContext = cloud.getWXContext()
     const openId = wxContext.OPENID
     const dbname = 'Entrust'
@@ -19,6 +20,8 @@ exports.main = async (event, context) => {
         let FormData = event.FormData
         let photoInfo = event.photoInfo
         let updateTime = event.updateTime
+        let publishPlate=event.publishPlate
+        let plate=event.plate
         FormData['totalPrice'] = parseInt(FormData['totalPrice'])
 
         return await db.collection(dbname).add({
@@ -32,8 +35,8 @@ exports.main = async (event, context) => {
                 checkedBy: '',
                 checkedTime: '',
                 title: '',
-                plate: '',
-                publishPlate: '',
+                plate: plate,
+                publishPlate: publishPlate,
                 charge: {
                     'name': '',
                     'phone': ''

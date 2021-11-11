@@ -12,67 +12,67 @@ Page({
         // 渲染详细列表
         DetialList: [{
             'id': 'name',
-            'title': '委托人',
+            'title': '联系人',
             'value': ''
         },
         {
             'id': 'phonenumber',
-            'title': '委托人联系电话',
+            'title': '联系电话',
             'value': ''
         },
-        {
-            'id': 'area',
-            'title': '产权面积(单位:㎡)',
-            'value': ''
-        },
-        {
-            'id': 'totalPrice',
-            'title': '外标价位',
-            'value': ''
-        },
+        // {
+        //     'id': 'area',
+        //     'title': '产权面积(单位:㎡)',
+        //     'value': ''
+        // },
+        // {
+        //     'id': 'totalPrice',
+        //     'title': '外标价位',
+        //     'value': ''
+        // },
         {
             'id': 'location',
-            'title': '所属小区',
+            'title': '所在城市',
             'value': ''
         },
-        {
-            'id': 'detailLocation',
-            'title': '房源地址',
-            'value': ''
-        },
+        // {
+        //     'id': 'detailLocation',
+        //     'title': '房源地址',
+        //     'value': ''
+        // },
         {
             'id': 'HouseType',
-            'title': '房子状况',
+            'title': '证书类型',
             'value': ''
         },
-        {
-            'id': 'houseStyle',
-            'title': '房子类型',
-            'value': ''
-        },
-        {
-            'id': 'furniture',
-            'title': '装修配置',
-            'value': ''
-        },
-        {
-            'id': 'Tags',
-            'title': '房子优势',
-            'value': ''
-        },
-        {
-            'id': 'LookUpStyle',
-            'title': '看房方式',
-            'value': ''
-        },
+        // {
+        //     'id': 'houseStyle',
+        //     'title': '房子类型',
+        //     'value': ''
+        // },
+        // {
+        //     'id': 'furniture',
+        //     'title': '装修配置',
+        //     'value': ''
+        // },
+        // {
+        //     'id': 'Tags',
+        //     'title': '房子优势',
+        //     'value': ''
+        // },
+        // {
+        //     'id': 'LookUpStyle',
+        //     'title': '看房方式',
+        //     'value': ''
+        // },
         {
             'id': 'Invoice',
-            'title': '契税发票时间是否满两年',
+            'title': '是否有社保',
             'value': ''
         },
         {
             'id': 'Signing',
-            'title': '网签是否满三年',
+            'title': '是否可以到场配合检查',
             'value': ''
         }
         ],
@@ -196,7 +196,10 @@ Page({
         StatusList['checkedTime'] = data.checkedTime
         StatusList['publish'] = data.publish
         StatusList['publishTime'] = data.publishTime
-
+        this.setData({
+            plate:data.plate,
+            publishPlate : data.publishPlate
+        })
         var name = data.charge['name']
         var phone = data.charge['phone']
         var displayPhone = phone.replace(phone.substring(3, 7), "****")
@@ -317,7 +320,7 @@ Page({
         let that = this
         let userInfo = wx.getStorageSync('userInfo')
         let checkedBy = userInfo.name
-        let title = this.data.title
+        let title = this.data.DetialList[0].value
         let ID = this.data._id
         let publishPlate = this.data.publishPlate
         let plate = this.data.plate

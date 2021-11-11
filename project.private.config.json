@@ -1,0 +1,24 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "Adminpackage/managerHome/managerHome",
+          "pathName": "Adminpackage/managerHome/managerHome",
+          "query": "id=%E6%AF%9B%E5%BB%BA%E9%A3%9E",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

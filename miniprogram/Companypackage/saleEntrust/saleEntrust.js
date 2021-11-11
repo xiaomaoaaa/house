@@ -11,43 +11,44 @@ Page({
      */
     data: {
         // 导航栏标题
-        NavigationBarTitle: '发布委托',
+        NavigationBarTitle: '发布求职信息',
         // 渲染输入框
-        InputList: [{
-            'id': 'detailLocation',
-            'title': '房源地址:',
-            'placeholder': '请填写房源详细地址',
-            'type': 'text',
-            'maxlength': 50
-        },
+        InputList: [
+        //     {
+        //     'id': 'detailLocation',
+        //     'title': '房源地址:',
+        //     'placeholder': '请填写房源详细地址',
+        //     'type': 'text',
+        //     'maxlength': 50
+        // },
         {
             'id': 'location',
-            'title': '所属小区:',
-            'placeholder': '如:莲湖区 梨园路',
+            'title': '所在城市:',
+            'placeholder': '如:杭州',
             'type': 'text',
             'maxlength': 50
         },
-        {
-            'id': 'furniture',
-            'title': '装修配置:',
-            'placeholder': '如:有空调、有热水等',
-            'type': 'text',
-            'maxlength': 50
-        },
-        {
-            'id': 'area',
-            'title': '产权面积(单位:㎡):',
-            'placeholder': '请填写房子的产权面积',
-            'type': 'digit',
-            'maxlength': 20
-        },
-        {
-            'id': 'totalPrice',
-            'title': '外标价位(单位:万元):',
-            'placeholder': '请填写房子的外标价位',
-            'type': 'digit',
-            'maxlength': 20
-        },
+        // {
+        //     'id': 'furniture',
+        //     'title': '装修配置:',
+        //     'placeholder': '如:有空调、有热水等',
+        //     'type': 'text',
+        //     'maxlength': 50
+        // },
+        // {
+        //     'id': 'area',
+        //     'title': '产权面积(单位:㎡):',
+        //     'placeholder': '请填写房子的产权面积',
+        //     'type': 'digit',
+        //     'maxlength': 20
+        // },
+        // {
+        //     'id': 'totalPrice',
+        //     'title': '外标价位(单位:万元):',
+        //     'placeholder': '请填写房子的外标价位',
+        //     'type': 'digit',
+        //     'maxlength': 20
+        // },
         {
             'id': 'name',
             'title': '您的称呼:',
@@ -67,30 +68,32 @@ Page({
         // 渲染选择器
         PickerList: [{
             'id': 'HouseType',
-            'title': '房子类型',
-            'pickerlist': ['新房子', '二手房', '其他']
-        }, {
-            'id': 'LookUpStyle',
-            'title': '看房方式',
-            'pickerlist': ['随时看房', '电话预约', '其他']
-        }, {
+            'title': '证书类型',
+            'pickerlist': ['执业中药师', '执业西药师', '初级中药师', '初级西药师','护士证书','医师证书','其他']
+        }, 
+        // {
+        //     'id': 'LookUpStyle',
+        //     'title': '看房方式',
+        //     'pickerlist': ['随时看房', '电话预约', '其他']
+        // },
+         {
             'id': 'Invoice',
-            'title': '契税发票时间是否满两年',
+            'title': '是否有社保',
             'pickerlist': ["是", "否"]
         }, {
             'id': 'Signing',
-            'title': '网签是否满三年',
+            'title': '是否可以到场配合检查',
             'pickerlist': ["是", "否"]
         }],
 
         // 房型选择列表
-        HouseStyleList: [
-            ['0室', '1室', '2室', '3室', '4室', '5室'],
-            ['0厅', '1厅', '2厅', '3厅'],
-            ['0卫', '1卫', '2卫', '3卫']
-        ],
+        // HouseStyleList: [
+        //     ['0室', '1室', '2室', '3室', '4室', '5室'],
+        //     ['0厅', '1厅', '2厅', '3厅'],
+        //     ['0卫', '1卫', '2卫', '3卫']
+        // ],
         // 房型选择结果
-        HouseStyleSelected: [0, 0, 0],
+        // HouseStyleSelected: [0, 0, 0],
         // 委托类型
         EntrustType: '',
         // 表单数据
@@ -236,111 +239,111 @@ Page({
     },
 
     // 房型选择
-    HouseStyleChange(e) {
-        let HouseStyleList = this.data.HouseStyleList
-        let FormData = this.data.FormData
-        console.log(e, e.detail.value)
-        let value = e.detail.value
-        let room = value[0]
-        let hall = value[1]
-        let toilet = value[2]
+    // HouseStyleChange(e) {
+    //     let HouseStyleList = this.data.HouseStyleList
+    //     let FormData = this.data.FormData
+    //     console.log(e, e.detail.value)
+    //     let value = e.detail.value
+    //     let room = value[0]
+    //     let hall = value[1]
+    //     let toilet = value[2]
 
-        console.log(room, typeof (room), hall, toilet)
+    //     console.log(room, typeof (room), hall, toilet)
 
-        if (room == 0) {
-            room = ''
-        } else {
-            room = HouseStyleList[0][room]
-        }
-        if (hall == 0) {
-            hall = ''
-        } else {
-            hall = HouseStyleList[1][hall]
-        }
-        if (toilet == 0) {
-            toilet = ''
-        } else {
-            toilet = HouseStyleList[2][toilet]
-        }
+    //     if (room == 0) {
+    //         room = ''
+    //     } else {
+    //         room = HouseStyleList[0][room]
+    //     }
+    //     if (hall == 0) {
+    //         hall = ''
+    //     } else {
+    //         hall = HouseStyleList[1][hall]
+    //     }
+    //     if (toilet == 0) {
+    //         toilet = ''
+    //     } else {
+    //         toilet = HouseStyleList[2][toilet]
+    //     }
 
-        let houseStyle = `${room}${hall}${toilet}`
+    //     let houseStyle = `${room}${hall}${toilet}`
 
-        let roomStyle = ''
+    //     let roomStyle = ''
 
-        switch (e.detail.value[0]) {
-            case 1:
-                roomStyle = '一居室';
-                break;
-            case 2:
-                roomStyle = '二居室';
-                break;
-            case 3:
-                roomStyle = '三居室';
-                break;
-            case 4:
-                roomStyle = '四居室';
-                break;
-            case 5:
-                roomStyle = '五居室';
-                break;
-            default:
-                roomStyle = '无'
-        }
+    //     switch (e.detail.value[0]) {
+    //         case 1:
+    //             roomStyle = '一居室';
+    //             break;
+    //         case 2:
+    //             roomStyle = '二居室';
+    //             break;
+    //         case 3:
+    //             roomStyle = '三居室';
+    //             break;
+    //         case 4:
+    //             roomStyle = '四居室';
+    //             break;
+    //         case 5:
+    //             roomStyle = '五居室';
+    //             break;
+    //         default:
+    //             roomStyle = '无'
+    //     }
 
-        FormData.roomStyle = roomStyle
-        FormData.houseStyle = houseStyle
+    //     FormData.roomStyle = roomStyle
+    //     FormData.houseStyle = houseStyle
 
-        this.setData({
-            HouseStyleSelected: value,
-            FormData
-        })
-    },
+    //     this.setData({
+    //         HouseStyleSelected: value,
+    //         FormData
+    //     })
+    // },
 
     // 选择照片
-    ChooseImage() {
-        wx.chooseImage({
-            count: 4, //默认9
-            sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album'], //从相册选择
-            success: (res) => {
-                if (this.data.imgList.length != 0) {
-                    this.setData({
-                        imgList: this.data.imgList.concat(res.tempFilePaths)
-                    })
-                } else {
-                    this.setData({
-                        imgList: res.tempFilePaths
-                    })
-                }
-            }
-        });
-    },
+    // ChooseImage() {
+    //     wx.chooseImage({
+    //         count: 4, //默认9
+    //         sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+    //         sourceType: ['album'], //从相册选择
+    //         success: (res) => {
+    //             if (this.data.imgList.length != 0) {
+    //                 this.setData({
+    //                     imgList: this.data.imgList.concat(res.tempFilePaths)
+    //                 })
+    //             } else {
+    //                 this.setData({
+    //                     imgList: res.tempFilePaths
+    //                 })
+    //             }
+    //         }
+    //     });
+    // },
 
     // 预览照片
-    ViewImage(e) {
-        wx.previewImage({
-            urls: this.data.imgList,
-            current: e.currentTarget.dataset.url
-        });
-    },
+    // ViewImage(e) {
+    //     wx.previewImage({
+    //         urls: this.data.imgList,
+    //         current: e.currentTarget.dataset.url
+    //     });
+    // },
 
     // 删除照片
-    DelImg(e) {
-        wx.showModal({
-            title: '提示',
-            content: '确定要删除这张照片吗？',
-            cancelText: '取消',
-            confirmText: '确定',
-            success: res => {
-                if (res.confirm) {
-                    this.data.imgList.splice(e.currentTarget.dataset.index, 1);
-                    this.setData({
-                        imgList: this.data.imgList
-                    })
-                }
-            }
-        })
-    },
+    // DelImg(e) {
+    //     wx.showModal({
+    //         title: '提示',
+    //         content: '确定要删除这张照片吗？',
+    //         cancelText: '取消',
+    //         confirmText: '确定',
+    //         success: res => {
+    //             if (res.confirm) {
+    //                 this.data.imgList.splice(e.currentTarget.dataset.index, 1);
+    //                 this.setData({
+    //                     imgList: this.data.imgList
+    //                 })
+    //             }
+    //         }
+    //     })
+    // },
 
     // 显示弹窗
     showModal(e) {
@@ -455,96 +458,96 @@ Page({
         // 计算平均价格
         let averagePrice = (FormData['totalPrice'] * 10000 / FormData['area']).toFixed(2)
         console.log('averagePrice', averagePrice)
-        FormData['averagePrice'] = averagePrice
+     
         // 表单数据的校验
-        for (let key in FormData) {
-            if (FormData[key] == '') {
-                wx.showToast({
-                    title: '请把所有数据填写完整',
-                    icon: 'none',
-                    mask: true,
-                    duration: 2000
-                })
-                return;
-            }
-        }
+        // for (let key in FormData) {
+        //     if (FormData[key] == '') {
+        //         wx.showToast({
+        //             title: '请把所有数据填写完整',
+        //             icon: 'none',
+        //             mask: true,
+        //             duration: 2000
+        //         })
+        //         return;
+        //     }
+        // }
 
-        console.log(ImgList.length)
+        // console.log(ImgList.length)
 
         // 图片的校验
         // 图片为空时报错
-        if (ImgList.length == 0) {
-            wx.hideLoading()
-            wx.showToast({
-                title: '图片不能为空,最少需要一张',
-                icon: 'none',
-                mask: true,
-                duration: 2000
-            })
-            return;
-        }
-        // 图片超过四张保错
-        if (ImgList.length > 4) {
-            wx.hideLoading()
-            wx.showToast({
-                title: '图片不能超过四张',
-                icon: 'none',
-                mask: true,
-                duration: 2000
-            })
-            return;
-        }
+        // if (ImgList.length == 0) {
+        //     wx.hideLoading()
+        //     wx.showToast({
+        //         title: '图片不能为空,最少需要一张',
+        //         icon: 'none',
+        //         mask: true,
+        //         duration: 2000
+        //     })
+        //     return;
+        // }
+        // // 图片超过四张保错
+        // if (ImgList.length > 4) {
+        //     wx.hideLoading()
+        //     wx.showToast({
+        //         title: '图片不能超过四张',
+        //         icon: 'none',
+        //         mask: true,
+        //         duration: 2000
+        //     })
+        //     return;
+        // }
 
         this.setData({
             FormData: FormData
         })
-
+        this.SubmitEntrust()
         // 上传图片
-        this.UploadImages()
+        // this.UploadImages()
     },
 
 
     // 上传图片
-    UploadImages() {
-        wx.showLoading({
-            title: '保存图片...',
-            mask: true
-        })
-        let that = this
-        let imgPathList = []
-        // 保存照片
-        for (let i = 0; i < that.data.imgList.length; i++) {
-            const fileName = that.data.imgList[i];
-            const dotPosition = fileName.lastIndexOf('.');
-            const extension = fileName.slice(dotPosition);
-            const cloudPath = `${Date.now()}-${Math.floor(Math.random(0, 1) * 10000000)}${extension}`;
-            wx.cloud.uploadFile({
-                cloudPath,
-                filePath: fileName,
-                success(res) {
-                    wx.hideLoading()
-                    console.log('imgs', res, imgPathList.length, that.data.imgList.length)
-                    imgPathList.push(res.fileID)
-                    if (imgPathList.length == that.data.imgList.length) {
-                        // 保存信息
-                        that.SubmitEntrust(imgPathList)
-                    }
-                },
-                fail: err => {
-                    wx.hideLoading()
-                    wx.showToast({
-                        title: '图片保存失败',
-                        icon: "none",
-                        duration: 1500
-                    })
-                },
-                complete: res => { }
-            })
-        }
-    },
+    // UploadImages() {
+    //     wx.showLoading({
+    //         title: '保存图片...',
+    //         mask: true
+    //     })
+    //     let that = this
+    //     let imgPathList = []
+    //     // 保存照片
+    //     for (let i = 0; i < that.data.imgList.length; i++) {
+    //         const fileName = that.data.imgList[i];
+    //         const dotPosition = fileName.lastIndexOf('.');
+    //         const extension = fileName.slice(dotPosition);
+    //         const cloudPath = `${Date.now()}-${Math.floor(Math.random(0, 1) * 10000000)}${extension}`;
+    //         wx.cloud.uploadFile({
+    //             cloudPath,
+    //             filePath: fileName,
+    //             success(res) {
+    //                 wx.hideLoading()
+    //                 console.log('imgs', res, imgPathList.length, that.data.imgList.length)
+    //                 imgPathList.push(res.fileID)
+    //                 if (imgPathList.length == that.data.imgList.length) {
+    //                     // 保存信息
+    //                     that.SubmitEntrust(imgPathList)
+    //                 }
+    //             },
+    //             fail: err => {
+    //                 wx.hideLoading()
+    //                 wx.showToast({
+    //                     title: '图片保存失败',
+    //                     icon: "none",
+    //                     duration: 1500
+    //                 })
+    //             },
+    //             complete: res => { }
+    //         })
+    //     }
+    // },
 
     // 提交信息
-    SubmitEntrust(photoInfo) {
+    SubmitEntrust() {
         wx.showLoading({
             title: '提交委托...',
             mask: true
@@ -558,7 +561,9 @@ Page({
                 type: 'add',
                 EntrustType: EntrustType,
                 FormData: FormData,
-                photoInfo: photoInfo,
+                photoInfo: [],
+                plate : "二手房",
+                publishPlate : "SecondHouse",
                 updateTime: formatTime(new Date())
             },
             success: res => {

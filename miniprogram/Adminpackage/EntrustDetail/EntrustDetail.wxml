@@ -1,14 +1,14 @@
 <!--Adminpackage/EntrustDetail/EntrustDetail.wxml-->
 <!-- 步骤1 -->
 <view wx:if="{{step==1&&!preview}}">
-	<view class="list-box">
+	<!-- <view class="list-box">
 		<text decode="true" class="desc">提示：请检查委托人发布的详细委托内容。<text decode="true" class="tips">\n1、如有不明确的请直接联系委托人；\n2、如果检查没有问题，点击“下一步”,按照提示操作即可。</text></text>
-	</view>
+	</view> -->
 
 	<view class="list-box">
-		<view class="title">房子详细信息：（{{StatusList.EntrustType=='sale'?'出售':'出租'}}）</view>
+		<view class="title">{{publishPlate=="RentingHouse"?"招聘":"求职"}}详细信息：</view>
 		<view class="desc" wx:for="{{DetialList}}" wx:key='key' data-id="{{item['_id']}}" bindtap="Navigate">{{item.title}}：<text class="text-blue">{{item.value?item.value:'无'}}</text></view>
-		<view class="desc">发布委托时间：<text class="text-blue">{{StatusList.updateTime?StatusList.updateTime:'无'}}</text></view>
+		<view class="desc">发布{{publishPlate=="RentingHouse"?"招聘":"求职"}}时间：<text class="text-blue">{{StatusList.updateTime?StatusList.updateTime:'无'}}</text></view>
 	</view>
 
 	<view class="list-box">
@@ -16,13 +16,13 @@
 		<view class="desc">发布状态：<text class="text-red">{{StatusList.publish?'已发布':'未发布'}} {{StatusList.checkedBy?StatusList.checkedBy:''}} {{StatusList.publishTime?StatusList.publishTime:''}}</text></view>
 	</view>
 
-	<view class="list-box">
+	<!-- <view class="list-box">
 		<view class="title">委托人上传的照片(共{{photoInfo.length?photoInfo.length:0}}张)</view>
 		<image wx:for="{{photoInfo}}" src="{{item}}"></image>
-	</view>
+	</view> -->
 
 	<view class="padding flex flex-direction" wx:if='{{showButton}}'>
-		<button class='cu-btn lg submitbtn' form-type="SubmitEntrust" style="background:#0080ff;" bindtap="nextStep">确认无误,下一步</button>
+		<button class='cu-btn lg submitbtn' form-type="SubmitEntrust" style="background:#0080ff;" bindtap="SubmitData">确认无误,下一步</button>
 	</view>
 
 </view>

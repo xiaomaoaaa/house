@@ -24,6 +24,12 @@ Page({
                 "icon": "../image/relation.png",
                 "text": "联系员工",
                 "url": "../../Companypackage/Contact/Contact"
+            },
+            {
+                "id": "#",
+                "icon": "../image/relation.png",
+                "text": "继续教育",
+                "url": "../../Companypackage/Contact/Contact"
             }
         ],
         // 查询到的数据

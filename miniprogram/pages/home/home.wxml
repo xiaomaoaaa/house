@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <!-- 功能选项a -->
 <view class="select-box">
-	<view data-url="../../Companypackage/newHouse/newHouse" bindtap="Navigate">
+	<view data-url="../../Companypackage/qualification/qualification" bindtap="Navigate">
 		<image src="../image/newHouse.png"></image>
 	</view>
 	<view data-url="../../Companypackage/secondHandHouse/secondHandHouse" bindtap="Navigate">
@@ -50,13 +50,10 @@
 			<view class="card-content-box">
 
 				<view class="card-content-box-row-top">
-					<view class="content-row">
-						<view class="float-left font-weight">{{item.FormData.roomStyle}} {{item.FormData.area}}㎡</view>
-						<view class="float-right price-text">{{item.FormData.totalPrice}}{{item.EntrustType=='sale'?'万':'元/月'}}</view>
-					</view>
+			
 					<view class="content-row">
 						<view class="float-left text-grey">{{item.FormData.location}}</view>
-						<view class="float-right text-grey">{{item.EntrustType=='sale'?item.FormData.averagePrice:''}}{{item.EntrustType=='sale'?'元/㎡':''}}</view>
+					
 					</view>
 				</view>
 
