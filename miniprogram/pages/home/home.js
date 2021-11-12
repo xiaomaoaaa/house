@@ -1,4 +1,3 @@
-// pages/home/home.js
 var app = getApp()
 Page({
 
@@ -10,48 +9,49 @@ Page({
             {
                 "id": "#",
                 "icon": "../image/calculate-home.png",
-                "text": "房贷计算",
-                "url": "../../CalculatorPackage/calculator/calculator"
+                "text": "招聘列表",
+                "url": "../../Companypackage/rentingHouse/rentingHouse"
+                
             },
             {
                 "id": "#",
                 "icon": "../image/qualifications.png",
-                "text": "公司资质",
-                "url": "../../Companypackage/qualification/qualification"
+                "text": "求职列表",
+                "url": "../../Companypackage/secondHandHouse/secondHandHouse"
             },
             {
                 "id": "#",
                 "icon": "../image/relation.png",
-                "text": "联系员工",
+                "text": "证书查询",
                 "url": "../../Companypackage/Contact/Contact"
             },
             {
                 "id": "#",
-                "icon": "../image/relation.png",
+                "icon": "../image/entrust-bar-selected.png",
                 "text": "继续教育",
                 "url": "../../Companypackage/Contact/Contact"
             }
         ],
-        // 查询到的数据
+        defaultimg1:"../image/default.jpg",
+        defaultimg2:"../image/default2.jpg",
+        // 查询到的招聘数据
         HouseList: [],
-        // 默认数据总数
-        total: 0,
-        // 默认查询第一页
-        page: 0,
+        // 查询到的求职数据
+        newsHouseList: [],
         // 默认公告信息
-        notice:'欢迎使用 邦房-团结南路店 这里有大量的好房源等您来挑选~ 同时也欢迎发布你的房源信息到这里来~'
+        notice: '欢迎使用 ~'
     },
 
     /** 
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log('onload')
         // 删除本地缓存
         wx.removeStorageSync('userInfo')
         // 获取个人信息，如果不存在，则跳转到认证页面
         this.IsAuthor()
         this.CompanyInfo()
+        this.QueryHose()
     },
 
     /**
@@ -59,20 +59,16 @@ Page({
      */
     onShow: function () {
         // app.IsLogon()
-        console.log(app.globalData)
         // 全局变量
         let globalData = app.globalData
         this.setData({
-            total: 0,
-            page: 0,
+   
+          
             HouseList: [],
             UserLogin: globalData.UserLogin,
             userInfo: globalData.userInfo
         })
-        if (globalData.UserLogin) {
-            // 获取推荐列表的数据
-            this.DocCount()
-        }
+       
     },
 
     /**
@@ -86,11 +82,9 @@ Page({
         var that = this
         wx.getSetting({
             success(res) {
-                console.log(res)
                 if (res.authSetting['scope.userInfo']) {
                     wx.getUserInfo({
                         success: function (res) {
-                            // console.log(res)
                             var userInfo = res.userInfo
                             var nickName = userInfo.nickName
                             var avatarUrl = userInfo.avatarUrl
@@ -137,7 +131,6 @@ Page({
             },
             success: res => {
                 wx.hideLoading()
-                console.log('res', res)
                 let result = res.result.data
                 // 判断是否已经注册
                 if (result.length) {
@@ -158,7 +151,7 @@ Page({
                     })
                     // 缓存到本地
                     wx.setStorageSync('userInfo', userInfo)
-                    console.log('appdata', app.globalData)
+
                 } else {
                     // 未注册，页面跳转到授权注册页面
                     wx.redirectTo({
@@ -180,7 +173,35 @@ Page({
             }
         })
     },
+     // 页面跳转
+     NavigateToPages(e) {
+        let url = e.currentTarget.dataset.url
+        let id = e.currentTarget.dataset.id
+        let title = e.currentTarget.dataset.title
+        let backgroundcolor = e.currentTarget.dataset.backgroundcolor
 
+        console.log(e, url, id, title)
+
+        if (this.data.UserLogin) {
+            wx.navigateTo({
+                url: `${url}?id=${id}&title=${title}&backgroundcolor=${backgroundcolor}`,
+                success: function (res) {
+                    console.log('res', res)
+                },
+                fail: function (err) {
+                    console.log('err', err)
+                }
+            })
+        } else {
+            // 提示登录
+            wx.showToast({
+                title: '你还未登录，请先到个人中心登录！',
+                icon: 'none',
+                duration: 2500,
+                mask: true,
+            })
+        }
+    },
     // 跳转函数
     Navigate: function (e) {
         console.log(e, e.currentTarget.dataset.id)
@@ -234,7 +255,7 @@ Page({
             .get({
                 success(res) {
                     wx.hideLoading()
-                    console.log('CompanyInfo-res', res,that.data.notice==res.data[0].notice)
+                    console.log('CompanyInfo-res', res, that.data.notice == res.data[0].notice)
                     if (res.errMsg == "collection.get:ok") {
                         if (res.data.length) {
                             if (that.data.notice != res.data[0].notice) {
@@ -252,63 +273,29 @@ Page({
             })
     },
 
-    // 查询数据总数
-    DocCount() {
-        let that = this
-        const db = wx.cloud.database()
-        db.collection('Entrust')
-            .where({
-                publish: true,
-                'recommendData.Isrecommend': true
-            })
-            .count({
-                success(res) {
-                    console.log('count-res', res)
-                    if (res.errMsg == "collection.count:ok") {
-                        that.setData({
-                            total: res.total
-                        })
-                        let page = that.data.page
-                        that.QueryHose(page)
-                    } else { }
-                },
-                fail(err) {
-                    wx.hideLoading()
-                    console.log('detail-err', err)
-                }
-            })
-    },
 
     // 获取房源数据列表
-    QueryHose(page) {
-        // 如果没有设置推荐，则显示所有数据
-        let Isrecommend = true
-        if (this.data.total == 0) {
-            Isrecommend = false
-        }
-        console.log(Isrecommend)
-
+    QueryHose() {
         wx.showLoading({
-            title: '加载新的房源...',
+            title: '加载中...',
             mask: true
         })
         let that = this
-        let HouseList = this.data.HouseList
-
         const db = wx.cloud.database()
         db.collection('Entrust')
             .orderBy('recommendData.weight', 'desc')
             .where({
                 publish: true,
-                'recommendData.Isrecommend': Isrecommend
+                
             })
-            .skip(page)
-            .limit(10)
+            .limit(20)
             .field({
                 _id: true,
                 photoInfo: true,
                 title: true,
                 EntrustType: true,
+                publishTime: true,
+                publishPlate: true,
                 'FormData.area': true,
                 'FormData.Tags': true,
                 'FormData.roomStyle': true,
@@ -322,13 +309,22 @@ Page({
                     console.log('Recommend-res', res)
                     if (res.errMsg == "collection.get:ok") {
                         let data = res.data
+                        let HouseList = []
+                        let newsHouseList = []
                         if (data.length > 0) {
-                            for (let i = 0; i < data.length; i++) {
-                                HouseList.push(data[i])
-                            }
+                            data.map((item, index) => {
+                                if (item.publishPlate == "SecondHouse") {
+                                    newsHouseList.push(item)
+                                } else {
+                                    HouseList.push(item)
+                                }
+                            })
+
+
                             that.setData({
-                                page: page,
-                                HouseList: HouseList
+                             
+                                HouseList: HouseList,
+                                newsHouseList: newsHouseList
                             })
                         }
                     }
@@ -340,53 +336,7 @@ Page({
             })
 
 
-        // wx.cloud.callFunction({
-        //     name: 'HouseInfo',
-        //     data: {
-        //         type: 'query',
-        //         key: 'Recommend',
-        //         page: page
-        //     },
-        //     success: res => {
-        //         wx.hideLoading()
-        //         console.log('Recommend-res', res)
-        //         if (res.errMsg == "cloud.callFunction:ok") {
-        //             let data = res.result.list
-        //             if (data.length > 0) {
-        //                 for (let i = 0; i < data.length; i++) {
-        //                     HouseList.push(data[i])
-        //                 }
-        //                 that.setData({
-        //                     page: page,
-        //                     HouseList: HouseList
-        //                 })
-        //             } else {
-        //                 // 提示没有数据
-        //                 // wx.showToast({
-        //                 //     title: '已经显示所有数据了哦！',
-        //                 //     icon: 'none',
-        //                 //     mask: true
-        //                 // })
-        //             }
-        //         } else {
-        //             // 提示网络错误
-        //             // wx.showToast({
-        //             //     title: '查询失败,请返回重新打开',
-        //             //     icon: 'none',
-        //             //     mask: true
-        //             // })
-        //         }
-        //     },
-        //     fail: err => {
-        //         wx.hideLoading()
-        //         console.log('myentrust-err', err)
-        //         // wx.showToast({
-        //         //     title: '网络错误,查询失败,请返回重新打开',
-        //         //     icon: 'none',
-        //         //     mask: true
-        //         // })
-        //     }
-        // })
+
     },
 
     /**
@@ -416,24 +366,6 @@ Page({
      */
     onPullDownRefresh: function () {
 
-    },
-
-    /** 
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function (e) {
-        let total = this.data.total
-        let page = this.data.page
-        let HouseList = this.data.HouseList
-
-        if (HouseList.length < total) {
-            page = page + 10
-            this.QueryHose(page)
-        } else {
-            this.setData({
-                showEnd: true
-            })
-        }
     },
 
     /**

@@ -17,6 +17,18 @@
           "pathName": "Adminpackage/managerHome/managerHome",
           "query": "id=%E6%AF%9B%E5%BB%BA%E9%A3%9E",
           "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "Companypackage/rentingHouse/rentingHouse",
+          "pathName": "Companypackage/rentingHouse/rentingHouse",
+          "query": "id=undefined",
+          "scene": null
         }
       ]
     }

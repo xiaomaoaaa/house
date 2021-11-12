@@ -1,15 +1,6 @@
-<!--pages/home/home.wxml-->
-<!-- 功能选项a -->
 <view class="select-box">
-	<view data-url="../../Companypackage/qualification/qualification" bindtap="Navigate">
-		<image src="../image/newHouse.png"></image>
-	</view>
-	<view data-url="../../Companypackage/secondHandHouse/secondHandHouse" bindtap="Navigate">
-		<image src="../image/secondHand.png"></image>
-	</view>
-	<view data-url="../../Companypackage/rentingHouse/rentingHouse" bindtap="Navigate">
-		<image src="../image/rentinghouse.png"></image>
-	</view>
+		<image src="../image/qiuzhi.jpg" bindtap='NavigateToPages' data-id="sale" data-backgroundcolor="#48c0f2" data-title="发布求职信息" data-url="../../Companypackage/saleEntrust/saleEntrust"></image>
+		<image src="../image/zhaopin.jpg" bindtap='NavigateToPages' data-id="rentout" data-backgroundcolor="#f9ae95" data-title="发布招聘信息" data-url="../../Companypackage/rentOutEntrust/rentOutEntrust"></image>
 </view>
 
 <!-- 功能选项b -->
@@ -35,28 +26,28 @@
 </view>
 
 <view class="recommendation-box">
-	<view class="recommendation-text">店长推荐</view>
+	<view class="recommendation-text">最新招聘<text data-url="../../Companypackage/secondHandHouse/secondHandHouse" bindtap="Navigate">更多</text></view>
 </view>
 
-<!-- 推荐列表 -->
+<!-- 最新招聘 -->
 <view class="recommendation-list-box" wx:for="{{HouseList}}" wx:key='key' data-url="{{item.url}}" data-id="{{item._id}}" bindtap="NavigateToDetail">
 	<view class="card">
 		<view class="card-left">
-			<image mode="scaleToFill" src="{{item.photoInfo[0]}}"></image>
-			<view class="card-tag-box card-tag card-tag-mark card-tag-bg">推荐</view>
+			<image mode="scaleToFill" src="{{defaultimg1}}" wx:if="{{item.publishPlate=='RentingHouse'}}"></image>
+			<image mode="scaleToFill" src="{{defaultimg2}}" wx:else></image>
+			<!-- <view class="card-tag-box card-tag card-tag-mark card-tag-bg">招聘</view> -->
 		</view>
 		<view class="card-right">
-			<view class="card-title">{{item.title}}</view>
+			<view class="card-title">姓名：{{item.title}}</view>
 			<view class="card-content-box">
 
 				<view class="card-content-box-row-top">
 			
 					<view class="content-row">
-						<view class="float-left text-grey">{{item.FormData.location}}</view>
-					
+						<view class="float-left text-grey">所在城市：{{item.FormData.location}}</view>
+						<view class="float-left text-grey">发布时间：{{item.publishTime}}</view>
 					</view>
 				</view>
-
 				<view class="card-content-box-row-bottom">
 					<view class="content-tag bg-tag bg-cyan light" wx:for="{{item.FormData.Tags}}" wx:for-item="tag" wx:key='key'>{{tag}}</view>
 				</view>
@@ -64,6 +55,31 @@
 		</view>
 	</view>
 </view>
-
+<view class="recommendation-box">
+	<view class="recommendation-text">最新求职<text data-url="../../Companypackage/rentingHouse/rentingHouse" bindtap="Navigate">更多</text></view>
+</view>
+<!-- 最新求职 -->
+<view class="recommendation-list-box" wx:for="{{newsHouseList}}" wx:key='key' data-url="{{item.url}}" data-id="{{item._id}}" bindtap="NavigateToDetail">
+	<view class="card">
+		<view class="card-left">
+			<image mode="scaleToFill" src="{{defaultimg2}}" ></image>
+			<!-- <view class="card-tag-box card-tag card-tag-mark card-tag-bg">求职</view> -->
+		</view>
+		<view class="card-right">
+			<view class="card-title">姓名:{{item.title}}</view>
+			<view class="card-content-box">
+				<view class="card-content-box-row-top">
+					<view class="content-row">
+						<view class="float-left text-grey">所在城市：{{item.FormData.location}}</view>
+						<view class="float-left text-grey">发布时间：{{item.publishTime}}</view>
+					</view>
+				</view>
+				<view class="card-content-box-row-bottom">
+					<view class="content-tag bg-tag bg-cyan light" wx:for="{{item.FormData.Tags}}" wx:for-item="tag" wx:key='key'>{{tag}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
 <!-- 占位 -->
 <view style="height:20px;"></view>

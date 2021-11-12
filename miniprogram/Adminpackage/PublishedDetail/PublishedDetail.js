@@ -197,6 +197,10 @@ Page({
         let name = data.charge['name']
         let phone = data.charge['phone']
         let displayPhone = phone.replace(phone.substring(3, 7), "****")
+        this.setData({
+            plate:data.plate,
+            publishPlate : data.publishPlate
+        })
 
         if (name == '' && phone == '') {
             let userInfo = wx.getStorageSync('userInfo')

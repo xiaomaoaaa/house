@@ -50,7 +50,7 @@
         }
     ],
     "window": {
-        "navigationBarTitleText": "租房小程序",
+        "navigationBarTitleText": "挂证小助手",
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTextStyle": "black"
@@ -66,12 +66,6 @@
                 "text": "首页",
                 "iconPath": "pages/image/home.png",
                 "selectedIconPath": "pages/image/home-selected.png"
-            },
-            {
-                "pagePath": "pages/entrustHome/entrustHome",
-                "text": "业主委托",
-                "iconPath": "pages/image/entrust-bar.png",
-                "selectedIconPath": "pages/image/entrust-bar-selected.png"
             },
             {
                 "pagePath": "pages/mypage/mypage",

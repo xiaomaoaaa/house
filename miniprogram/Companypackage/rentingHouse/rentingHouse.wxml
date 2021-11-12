@@ -3,19 +3,19 @@
 <!--pages/search/search.wxml-->
 
 <!-- 搜索框 -->
-<!-- <view>
+<view>
     <van-search value="{{fsearchkey}}" placeholder="请输入搜索关键词" bind:change="onChange" bind:search="onSearch" label="西安" shape="round">
         <view slot="action" bind:tap="onSearch">搜索</view>
     </van-search>
-</view> -->
+</view>
 
 <!-- 筛选列表 -->
-<view>
+<!-- <view>
     <van-dropdown-menu>
         <van-dropdown-item id="HouseStyle" title="户型" value="{{HouseStyle}}" options="{{HouseStyleList}}" bind:change="ChangeHouseStyle"/>
         <van-dropdown-item id="HousePrice" title="价格" value="{{HousingPriceList.HousePrice}}" options="{{HousingPriceList}}" bind:change="ChangeHousingPrice"/>
     </van-dropdown-menu>
-</view>
+</view> -->
  
 <!-- 展示列表 -->
 <!-- <view>

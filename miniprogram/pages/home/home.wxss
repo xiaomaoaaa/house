@@ -1,21 +1,19 @@
 /* pages/home/home.wxss */
 .select-box{
-    width: 100%;
-    display: inline-flex;
+    width: 750rpx;
+    display:flex;
+    justify-content: space-between;
     text-align: center;
-    padding: 5px 0px;
+    padding: 5px 16px;
     background-color: #fff;
-}
-
-.select-box view{
-    width: 212rpx;
-    height: 197rpx;
-    margin-left: 28.5rpx;
+    box-sizing: border-box;
 }
 
 .select-box image{
-    width: 212rpx;
+    display: block;
+    width: 325rpx;
     height: 197rpx;
+    border-radius: 20rpx;
 }
 
 
@@ -80,9 +78,15 @@
     line-height: 40px;
     font-size: 16px;
     font-weight: bold;
-    padding-left: 8px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10rpx;
 }
-
+.recommendation-text text{
+    color: #999;
+    font-size: 28rpx;
+    font-weight: normal;
+}
 .recommendation-list-box{
     position: relative;
     box-sizing: border-box;
@@ -95,7 +99,7 @@
 
 .card {
     display: flex;
-    display: -webkit-flex;
+    align-items: center;
 }
 
 .card-left {
@@ -104,7 +108,6 @@
     flex: none;
     width: 90px;
     height: 90px;
-    margin-top: 10px;
     margin-right: 8px;
 }
 
@@ -133,9 +136,6 @@
 
 .card-content-box {
     width: 100%;
-    height: 70px;
-    margin-top: 12px;
-    /* background-color: #ee0a24; */
 }
 
 .card-content-box-row-top {

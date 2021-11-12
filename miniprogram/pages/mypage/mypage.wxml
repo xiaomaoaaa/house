@@ -63,12 +63,12 @@
 		</view>
 	</view>
 
-	<view class="content-row" bindtap="CleanInfo">
+	<!-- <view class="content-row" bindtap="CleanInfo">
 		<view class="content-icon float-left">
 			<image src="../image/history.png"></image>
 		</view>
 		<view class="content-text font-size-14">清除记录</view>
-	</view>
+	</view> -->
 	<!-- <view class="content-row">
         <view class="content-icon float-left">
             <image src="../image/longout.png"></image>
