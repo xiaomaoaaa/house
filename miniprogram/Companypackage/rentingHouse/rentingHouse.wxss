@@ -10,7 +10,7 @@ view {
     padding: 0;
 }
 
-.card-box {
+recommendation-list-box{
     position: relative;
     box-sizing: border-box;
     padding: 8px 16px;
@@ -22,7 +22,7 @@ view {
 
 .card {
     display: flex;
-    display: -webkit-flex;
+    align-items: center;
 }
 
 .card-left {
@@ -31,7 +31,6 @@ view {
     flex: none;
     width: 90px;
     height: 90px;
-    margin-top: 10px;
     margin-right: 8px;
 }
 
@@ -51,15 +50,15 @@ view {
     font-size: 14px;
     font-weight: 900;
     line-height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* 描述 */
 
 .card-content-box {
     width: 100%;
-    height: 70px;
-    margin-top: 12px;
-    /* background-color: #ee0a24; */
 }
 
 .card-content-box-row-top {
@@ -82,6 +81,16 @@ view {
 }
 
 /* 标签 */
+
+.bg-tag{
+    background-color:#F6F7FB;
+    color:#677EA8;
+}
+
+.price-text{
+    font-size: 14px;
+    color:#EB4340;
+}
 
 /* 左上角的标签 */
 
@@ -117,26 +126,4 @@ view {
 
 .card-tag-bg {
     background-color: #ee0a24;
-}
-
-/* 颜色 */
-
-.bg-cyan {
-    background-color: #1cbbb4;
-    color: #fff;
-}
-
-
-.text-grey {
-    color: grey;
-}
-
-.price-text {
-    font-size: 14px;
-    font-weight: 900;
-    color: orangered;
-}
-
-.font-weight {
-    font-weight: bold;
 }

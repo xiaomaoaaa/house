@@ -16,10 +16,6 @@
     background-color: #fff;
 }
 
-.switch {
-    margin-top: 10px;
-    float: right;
-}
 
 .submit-btn {
     height: 44px;
@@ -39,21 +35,6 @@
     color: #0080ff;
 }
 
-.tag-box {
-    width: 90%;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28rpx;
-    height: 64rpx;
-    line-height: 1;
-    text-align: center;
-    text-decoration: none;
-    overflow: visible;
-    border: 1rpx solid #0081ff;
-    border-radius: 18rpx;
-}
 
 .padding-right-30rpx {
     padding-right: 30rpx;

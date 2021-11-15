@@ -22,7 +22,8 @@ exports.main = async (event, context) => {
         let updateTime = event.updateTime
         let publishPlate=event.publishPlate
         let plate=event.plate
-        FormData['totalPrice'] = parseInt(FormData['totalPrice'])
+        console.log(publishPlate)
+
 
         return await db.collection(dbname).add({
             data: {

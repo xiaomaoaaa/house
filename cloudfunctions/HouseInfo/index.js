@@ -19,7 +19,21 @@ exports.main = async (event, context) => {
         let limit = 10
         let dbname = event.key
         let page = event.page
-
+        let matchObj=null
+        let searchtext=event.searchtext?event.searchtext:''
+        if(searchtext){
+            matchObj={
+                'EntrustInfo.publish': true,
+                'EntrustInfo.title':db.RegExp({
+                    regexp: searchtext,
+                    options: 'i',
+                  })
+            }
+        }else{
+            matchObj={
+                'EntrustInfo.publish': true,
+            }  
+        }
         let res = await db.collection(dbname).aggregate()
             .skip(page)
             .limit(limit)
@@ -32,21 +46,16 @@ exports.main = async (event, context) => {
                 foreignField: '_id',
                 as: 'EntrustInfo',
             })
-            .match({
-                'EntrustInfo.publish': true
-            })
+            .match(matchObj)
             .project({
                 'ID': true,
                 'updateTime': true,
                 'EntrustInfo.title': true,
-                'EntrustInfo.FormData.houseStyle': true,
-                'EntrustInfo.FormData.roomStyle': true,
-                'EntrustInfo.FormData.area': true,
+                'EntrustInfo.FormData.HouseType': true,
                 'EntrustInfo.FormData.location': true,
+                'EntrustInfo.FormData.Invoice': true,
                 'EntrustInfo.FormData.Tags': true,
-                'EntrustInfo.FormData.averagePrice': true,
-                'EntrustInfo.FormData.totalPrice': true,
-                'EntrustInfo.photoInfo': true
+                'EntrustInfo.publishTime': true
             })
             .replaceRoot({
                 newRoot: $.mergeObjects([$.arrayElemAt(['$EntrustInfo', 0]), '$$ROOT'])
@@ -64,7 +73,8 @@ exports.main = async (event, context) => {
         let limit = 10
         let dbname = event.key
         let page = event.page
-        let RoomStyle = event.RoomStyle
+        let HouseType= event.HouseType
+       
         let res = await db.collection(dbname).aggregate()
             .skip(page)
             .limit(limit)
@@ -79,20 +89,17 @@ exports.main = async (event, context) => {
             })
             .match({
                 'EntrustInfo.publish': true,
-                'EntrustInfo.FormData.roomStyle': RoomStyle
+                'EntrustInfo.FormData.HouseType': HouseType
             })
             .project({
                 'ID': true,
                 'updateTime': true,
                 'EntrustInfo.title': true,
-                'EntrustInfo.FormData.houseStyle': true,
-                'EntrustInfo.FormData.roomStyle': true,
-                'EntrustInfo.FormData.area': true,
+                'EntrustInfo.FormData.HouseType': true,
                 'EntrustInfo.FormData.location': true,
+                'EntrustInfo.FormData.Invoice': true,
                 'EntrustInfo.FormData.Tags': true,
-                'EntrustInfo.FormData.averagePrice': true,
-                'EntrustInfo.FormData.totalPrice': true,
-                'EntrustInfo.photoInfo': true
+                'EntrustInfo.publishTime': true
             })
             .replaceRoot({
                 newRoot: $.mergeObjects([$.arrayElemAt(['$EntrustInfo', 0]), '$$ROOT'])
@@ -102,17 +109,16 @@ exports.main = async (event, context) => {
                 'EntrustInfo': false
             })
             .end()
+            console.log(res)
         return res
     }
 
     // 价格筛选
-    if (event.type == 'houseprice') {
+    if (event.type == 'invoice') {
         let limit = 10
         let page = 0
         let dbname = event.key
-        let min = parseInt(event.min)
-        let max = parseInt(event.max)
-
+        let Invoice= event.Invoice
         let res = await db.collection(dbname).aggregate()
             .skip(page)
             .limit(limit)
@@ -127,20 +133,17 @@ exports.main = async (event, context) => {
             })
             .match({
                 'EntrustInfo.publish': true,
-                'EntrustInfo.FormData.totalPrice': _.gte(min).lte(max)
+                'EntrustInfo.FormData.Invoice':Invoice
             })
             .project({
                 'ID': true,
                 'updateTime': true,
                 'EntrustInfo.title': true,
-                'EntrustInfo.FormData.houseStyle': true,
                 'EntrustInfo.FormData.roomStyle': true,
-                'EntrustInfo.FormData.area': true,
                 'EntrustInfo.FormData.location': true,
                 'EntrustInfo.FormData.Tags': true,
-                'EntrustInfo.FormData.averagePrice': true,
-                'EntrustInfo.FormData.totalPrice': true,
-                'EntrustInfo.photoInfo': true
+                'EntrustInfo.FormData.Invoice': true,
+                'EntrustInfo.publishTime': true
             })
             .replaceRoot({
                 newRoot: $.mergeObjects([$.arrayElemAt(['$EntrustInfo', 0]), '$$ROOT'])

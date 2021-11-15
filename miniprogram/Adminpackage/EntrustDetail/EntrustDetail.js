@@ -98,9 +98,9 @@ Page({
             'name': '',
             'phone': ''
         },
-        itemList: ['新房', '二手房', '租房'],
+        itemList: ['求职', '招聘'],
         // 发布的板块
-        publishPlateList: ['NewHouse', 'SecondHouse', 'RentingHouse'],
+        publishPlateList: [ 'SecondHouse', 'RentingHouse'],
         publishPlate: '',
         plate: ''
     },

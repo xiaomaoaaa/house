@@ -5,60 +5,48 @@ Page({
      * 页面的初始数据
      */
     data: {
-        searchkey: '',
-        HouseStyleList: [{
-            text: '所有户型',
+        HouseType: '',
+        HouseTypeList: [{
+            text: '所有证书类型',
             value: '0'
         }, {
-            text: '一居室',
-            value: '一居室'
+            text: '执业中药师',
+            value: '执业中药师'
         },
         {
-            text: '两居室',
-            value: '二居室'
+            text: '执业西药师',
+            value: '执业西药师'
         },
         {
-            text: '三居室',
-            value: '三居室'
+            text: '初级中药师',
+            value: '初级中药师'
         },
         {
-            text: '四居室',
-            value: '四居室'
+            text: '护士证书',
+            value: '护士证书'
         },
         {
-            text: '五居室',
-            value: '五居室'
+            text: '医师证书',
+            value: '医师证书'
+        },
+        {
+            text: '其他',
+            value: '其他'
         }
         ],
-        HousingPriceList: [{
-            text: '所有价格',
-            value: { 'min': 0, 'max': 0, 'HousePrice': '所有价格' }
+        InvoiceList: [{
+            text: '全部',
+            value: '0'
         }, {
-            text: '0–50万',
-            value: { 'min': 0, 'max': 50, 'HousePrice': '0–50万' }
+            text: '是',
+            value: '是'
         },
         {
-            text: '50–100万',
-            value: { 'min': 50, 'max': 100, 'HousePrice': '50–100万' }
+            text: '否',
+            value: '否'
         },
-        {
-            text: '100–150万',
-            value: { 'min': 100, 'max': 150, 'HousePrice': '100–150万' }
-        },
-        {
-            text: '150–200万',
-            value: { 'min': 150, 'max': 200, 'HousePrice': '150–200万' }
-        },
-        {
-            text: '200万以上',
-            value: { 'min': 200, 'max': 100000, 'HousePrice': '200万以上' }
-        }
         ],
-        // 户型
-        RoomStyle: '0',
-        // 价格区间
-        RoomPrice: { 'min': 0, 'max': 0 },
-        HousePrice: '',
+        Invoice: '0',
         // 查询到的数据
         HouseList: [],
         // 默认数据总数
@@ -68,17 +56,45 @@ Page({
         // 显示数据加载结束
         showEnd: false,
         // 搜索类型,默认为query，即搜索全部
-        type: 'query'
+        type: 'query',
+        defaultimg2:"../image/default2.jpg",
+        mark:""
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onLoad: function () {
+    onLoad: function (e) {
+        this.data.mark=e.mark
         let page = this.data.page
         let type = this.data.type
         this.DocCount()
         this.QueryHose(page, type)
+        if(e.mark=="RentingHouse"){
+            wx.setNavigationBarColor({
+                frontColor: '#ffffff',
+                backgroundColor: "#f9ae95",
+                animation: {
+                    duration: 400,
+                    timingFunc: 'easeIn'
+                }
+            })
+            wx.setNavigationBarTitle({
+                title: '招聘列表'
+              })
+        }else{
+            wx.setNavigationBarTitle({
+                title: '求职列表'
+              })
+            wx.setNavigationBarColor({
+                frontColor: '#ffffff',
+                backgroundColor: "#48c0f2",
+                animation: {
+                    duration: 400,
+                    timingFunc: 'easeIn'
+                }
+            })
+        }
     },
 
     // 查询数据总数
@@ -109,21 +125,16 @@ Page({
         })
         let that = this
         let HouseList = this.data.HouseList
-        let min = this.data.RoomPrice['min']
-        let max = this.data.RoomPrice['max']
-        let RoomStyle = this.data.RoomStyle
-
-        console.log('RoomPrice', this.data.RoomPrice['min'],this.data.RoomPrice['max'])
-
+        let Invoice = this.data.Invoice
+        let HouseType = this.data.HouseType
         wx.cloud.callFunction({
             name: 'HouseInfo',
             data: {
                 type: type,
-                key: 'SecondHouse',
+                key: that.data.mark,
                 page: page,
-                min: min,
-                max: max,
-                RoomStyle: RoomStyle
+                Invoice: Invoice,
+                HouseType:HouseType
             },
             success: res => {
                 wx.hideLoading()
@@ -221,8 +232,8 @@ Page({
         })
     },
 
-    // 户型改变
-    ChangeHouseStyle(e) {
+
+    ChangeHouseType(e) {
         console.log(e, e.detail)
         let key = e.detail
         let page = 0
@@ -232,29 +243,27 @@ Page({
             var type = 'housetype'
         }
         this.setData({
-            RoomStyle: key,
+            HouseType: key,
             HouseList: []
         })
         this.QueryHose(page, type)
     },
-
-    // 价格改变
-    ChangeHousingPrice(e) {
-        console.log(e, e.detail, typeof (e.detail))
+    ChangeInvoice(e) {
+        console.log(e, e.detail)
         let key = e.detail
         let page = 0
-        if (key['min'] == 0 && key['max'] == 0) {
+        if (key == '0') {
             var type = 'query'
         } else {
-            var type = 'houseprice'
+            var type = 'invoice'
         }
         this.setData({
-            RoomPrice: key,
+            page:0,
+            Invoice: key,
             HouseList: []
         })
         this.QueryHose(page, type)
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

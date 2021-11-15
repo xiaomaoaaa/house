@@ -11,7 +11,7 @@ Page({
     active: 0,
     steps: [
       {
-        text: '提交委托',
+        text: '提交申请',
         desc: '已完成'
       },
       {
@@ -40,7 +40,7 @@ Page({
     // 从发布委托也进来
     if (id == 'entrust') {
       let steps = this.data.steps
-      steps[0].desc = `${formatTime(new Date())}您的委托我们已经收到,稍后我们将会联系您，请保持电话畅通！`
+      steps[0].desc = `${formatTime(new Date())}您的发布申请我们已经收到,我们会尽快审核发布内容！`
       this.setData({
         steps: steps
       })
@@ -53,7 +53,7 @@ Page({
       let active = this.data.active
       let steps = this.data.steps
 
-      steps[0].desc = `委托提交成功 ${data.updateTime}`
+      steps[0].desc = `提交成功 ${data.updateTime}`
 
       if (data.checkedTime) {
         steps[1].desc = `已处理 （处理人：管理员）`

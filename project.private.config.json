@@ -25,8 +25,20 @@
           "scene": null
         },
         {
-          "name": "Companypackage/rentingHouse/rentingHouse",
-          "pathName": "Companypackage/rentingHouse/rentingHouse",
+          "name": "Companypackage/saleEntrust/saleEntrust",
+          "pathName": "Companypackage/saleEntrust/saleEntrust",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "Companypackage/rentOutEntrust/rentOutEntrust",
+          "pathName": "Companypackage/rentOutEntrust/rentOutEntrust",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "Companypackage/secondHandHouse/secondHandHouse",
+          "pathName": "Companypackage/secondHandHouse/secondHandHouse",
           "query": "id=undefined",
           "scene": null
         }
