@@ -8,79 +8,57 @@ Page({
      * 页面的初始数据
      */
     data: {
-        houseImages: [],
-        indicatorDots: true,
-        vertical: false,
-        autoplay: true,
-        circular: true,
-        interval: 1500,
-        duration: 500,
+    
+  
         // 房子信息
         // 渲染详细列表
-        DetialList: [
-            {
-                'id': 'area',
-                'title': '产权面积(单位:㎡)',
-                'value': ''
-            },
-            {
-                'id': 'totalPrice',
-                'title': '外标价位(单位:万元)',
-                'value': ''
-            },
-            {
-                'id': 'location',
-                'title': '所属小区',
-                'value': ''
-            },
-            {
-                'id': 'detailLocation',
-                'title': '房源地址',
-                'value': ''
-            },
-            {
-                'id': 'HouseType',
-                'title': '房子状况',
-                'value': ''
-            },
-            {
-                'id': 'houseStyle',
-                'title': '房子类型',
-                'value': ''
-            },
-            {
-                'id': 'furniture',
-                'title': '装修配置',
-                'value': ''
-            },
-            {
-                'id': 'Tags',
-                'title': '房子优势',
-                'value': ''
-            },
-            {
-                'id': 'LookUpStyle',
-                'title': '看房方式',
-                'value': ''
-            },
-            {
-                'id': 'Invoice',
-                'title': '契税发票时间是否满两年',
-                'value': ''
-            },
-            {
-                'id': 'Signing',
-                'title': '网签是否满三年',
-                'value': ''
-            },
-            {
-                'id': 'updateTime',
-                'title': '最近发布',
-                'value': ''
-            }
+        DetialList: [{
+            'id': 'name',
+            'title': '联系人',
+            'value': ''
+        },
+        {
+            'id': 'phonenumber',
+            'title': '联系电话',
+            'value': ''
+        },
+    
+        {
+            'id': 'location',
+            'title': '所在城市',
+            'value': ''
+        },
+      
+        {
+            'id': 'HouseType',
+            'title': '证书类型',
+            'value': ''
+        },
+       
+        {
+            'id': 'Invoice',
+            'title': '是否有社保',
+            'value': ''
+        },
+        {
+            'id': 'Signing',
+            'title': '是否可以到场配合检查',
+            'value': ''
+        }
+        ,
+        {
+            'id': 'furniture',
+            'title': '其他要求',
+            'value': ''
+        },
+        {
+            'id': 'publishTime',
+            'title': '发布时间',
+            'value': ''
+        }
         ],
         // 是否已收藏，默认为否
-        HasCollection: false
+        HasCollection: false,
     },
 
     /**
@@ -99,6 +77,7 @@ Page({
         let openid = userInfo.openid
         // 检查是否已经收藏
         this.HasCollection(openid, id)
+        
     },
 
     // 查询详情
@@ -110,16 +89,6 @@ Page({
         const db = wx.cloud.database()
         db.collection('Entrust').where({
             _id: id
-        }).field({
-            _id: false,
-            _openid: false,
-            EntrustType: false,
-            checkedBy: false,
-            checkedTime: false,
-            publish: false,
-            publishTime: false,
-            'FormData.name': false,
-            'FormData.phonenumber': false
         }).get({
             success(res) {
                 wx.hideLoading()
@@ -127,6 +96,33 @@ Page({
                 if (res.errMsg == "collection.get:ok") {
                     if (res.data.length > 0) {
                         let data = res.data[0]
+                        if(data.publishPlate=="RentingHouse"){
+                            wx.setNavigationBarColor({
+                                frontColor: '#ffffff',
+                                backgroundColor: "#f9ae95",
+                                animation: {
+                                    duration: 400,
+                                    timingFunc: 'easeIn'
+                                }
+                            })
+                            wx.setNavigationBarTitle({
+                                title: '招聘详情'
+                              })
+                        }else{
+                            wx.setNavigationBarTitle({
+                                title: '求职详情'
+                              })
+                            wx.setNavigationBarColor({
+                                frontColor: '#ffffff',
+                                backgroundColor: "#48c0f2",
+                                animation: {
+                                    duration: 400,
+                                    timingFunc: 'easeIn'
+                                }
+                            })
+                        }
+
+
                         that.SetLisDdata(data)
                     } else {
                         wx.showToast({
@@ -167,18 +163,13 @@ Page({
     // 赋值
     SetLisDdata(data) {
         let title = data.title
-        let houseImages = data.photoInfo
-        let charge = data.charge
         let FormData = data.FormData
-
-        let totalPrice = FormData.totalPrice
-        let averagePrice = FormData.averagePrice
-        let houseStyle = FormData.houseStyle
+        let HouseType = FormData.HouseType
         let location = FormData.location
         let Tags = FormData.Tags
-        let phone = charge.phone
-
+        let phone = FormData.phonenumber
         let DetialList = this.data.DetialList
+        DetialList[7].value=data.publishTime
         for (let key in FormData) {
             for (let i = 0; i < DetialList.length; i++) {
                 if (DetialList[i].id == key) {
@@ -192,26 +183,16 @@ Page({
         let displayPhone = phone.replace(phone.substring(3, 7), "****")
         this.setData({
             title: title,
-            houseImages: houseImages,
-            charge: charge,
-            totalPrice: totalPrice,
-            averagePrice: averagePrice,
-            houseStyle: houseStyle,
+            HouseType: HouseType,
             location: location,
             Tags: Tags,
             displayPhone: displayPhone,
             DetialList: DetialList,
+            
         })
         wx.hideLoading()
     },
 
-    // 跳转函数
-    NavigateToCalculator: function (e) {
-        console.log(e)
-        wx.navigateTo({
-            url: '../../CalculatorPackage/calculator/calculator',
-        })
-    },
 
     // 打电话
     CallPhone(e) {
@@ -296,7 +277,7 @@ Page({
                 data: {
                     ID: that.data.ID,
                     title: that.data.title,
-                    houseStyle: that.data.houseStyle,
+                    HouseType: that.data.HouseType,
                     location: that.data.location,
                     houseImages: that.data.houseImages,
                     type: 'sale',

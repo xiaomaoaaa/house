@@ -66,8 +66,13 @@ exports.main = async (event, context) => {
             publishTime: true,
             updateTime: true,
             title: true,
-            'FormData.detailLocation': true,
-            'FormData.houseStyle': true
+            'FormData.name': true,
+            'FormData.phonenumber': true,
+            'FormData.location': true,
+            'FormData.Invoice': true,
+            'FormData.Signing': true,
+            'FormData.furniture': true,
+            'FormData.HouseType': true,
         }).get()
         return EntrustList
     }
@@ -88,7 +93,8 @@ exports.main = async (event, context) => {
             publishTime: true,
             updateTime: true,
             title: true,
-            'FormData.detailLocation': true,
+            'FormData.HouseType': true,
+            'FormData.furniture': true,
             'FormData.name': true,
             'FormData.phonenumber': true
         }).get()

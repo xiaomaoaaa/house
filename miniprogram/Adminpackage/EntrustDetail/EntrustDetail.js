@@ -20,51 +20,19 @@ Page({
             'title': '联系电话',
             'value': ''
         },
-        // {
-        //     'id': 'area',
-        //     'title': '产权面积(单位:㎡)',
-        //     'value': ''
-        // },
-        // {
-        //     'id': 'totalPrice',
-        //     'title': '外标价位',
-        //     'value': ''
-        // },
+    
         {
             'id': 'location',
             'title': '所在城市',
             'value': ''
         },
-        // {
-        //     'id': 'detailLocation',
-        //     'title': '房源地址',
-        //     'value': ''
-        // },
+      
         {
             'id': 'HouseType',
             'title': '证书类型',
             'value': ''
         },
-        // {
-        //     'id': 'houseStyle',
-        //     'title': '房子类型',
-        //     'value': ''
-        // },
-        // {
-        //     'id': 'furniture',
-        //     'title': '装修配置',
-        //     'value': ''
-        // },
-        // {
-        //     'id': 'Tags',
-        //     'title': '房子优势',
-        //     'value': ''
-        // },
-        // {
-        //     'id': 'LookUpStyle',
-        //     'title': '看房方式',
-        //     'value': ''
-        // },
+       
         {
             'id': 'Invoice',
             'title': '是否有社保',
@@ -73,6 +41,12 @@ Page({
         {
             'id': 'Signing',
             'title': '是否可以到场配合检查',
+            'value': ''
+        }
+        ,
+        {
+            'id': 'furniture',
+            'title': '其他要求',
             'value': ''
         }
         ],
@@ -86,11 +60,6 @@ Page({
             'publish': '',
             'publishTime': ''
         },
-        showButton: false,
-        preview: false,
-        photoInfo: [],
-        // 步骤
-        step: 1,
         // 搜索标题
         title: '',
         // 负责人
@@ -174,18 +143,13 @@ Page({
 
     // 赋值
     SetLisDdata(data) {
-        console.log(data)
+     
         let FormData = data.FormData
         let DetialList = this.data.DetialList
         let StatusList = this.data.StatusList
         for (let key in FormData) {
             for (let i = 0; i < DetialList.length; i++) {
                 if (DetialList[i].id == key) {
-                    // 如果是标价，则根据市买房还是出租显示不同的单位
-                    if (key == 'totalPrice') {
-                        let title = data.EntrustType == 'sale' ? '外标价位(单位：万元)' : '外标价位(单位：元/月)'
-                        DetialList[i].title = title
-                    }
                     DetialList[i].value = FormData[key]
                 }
             }
@@ -221,96 +185,12 @@ Page({
             StatusList: StatusList,
             photoInfo: data.photoInfo,
             FormData: FormData,
-            showButton: true,
             title: data.title,
             charge: charge,
             displayPhone: displayPhone
         })
         wx.hideLoading()
     },
-
-    // 下一步
-    nextStep() {
-        this.setData({
-            step: this.data.step + 1
-        })
-    },
-
-    // 预览
-    Preview() {
-        this.setData({
-            preview: !this.data.preview
-        })
-    },
-
-    // 获取输入框数据
-    InputData: function (e) {
-        // console.log(e, e.currentTarget.id, e.detail.value)
-        let id = e.currentTarget.id
-        let value = e.detail.value
-        if (id == 'title') {
-            this.setData({
-                title: value
-            })
-        }
-        if (id == 'name') {
-            let charge = this.data.charge
-            charge['name'] = value
-            this.setData({
-                charge: charge
-            })
-        }
-        if (id == 'phone') {
-            let charge = this.data.charge
-            charge['phone'] = value
-            let displayPhone = ''
-            if (value.length == 11) {
-                displayPhone = value.replace(value.substring(3, 7), "****")
-            }
-            this.setData({
-                charge: charge,
-                displayPhone: displayPhone
-            })
-        }
-
-    },
-
-    // 板块选择
-    SelectPlate() {
-        let that = this
-        // 选择发布到哪个模块
-        wx.showActionSheet({
-            itemList: that.data.itemList,
-            mask: true,
-            success(res) {
-                console.log(res.tapIndex)
-                // 发布模块
-                that.setData({
-                    plate: that.data.itemList[res.tapIndex],
-                    publishPlate: that.data.publishPlateList[res.tapIndex]
-                })
-            },
-            fail(res) {
-                console.log(res.errMsg)
-            }
-        })
-    },
-
-    // 发布按钮
-    DoPublishing() {
-        let that = this
-        wx.showModal({
-            title: '发布确认提示',
-            content: `确定将该房源信息发布到${that.data.plate}板块吗?`,
-            success(res) {
-                if (res.confirm) {
-                    // 发布
-                    that.SubmitData()
-                }
-            }
-        })
-    },
-
     // 添加数据
     SubmitData() {
         wx.showLoading({

@@ -13,7 +13,7 @@ Page({
      */
     onLoad: function (e) {
         console.log(e)
-        let name = e.id
+        let name =decodeURI(e.id) 
         // 修改导航栏标题
         wx.setNavigationBarTitle({
             title: `欢迎，${name?name:''} 管理员`

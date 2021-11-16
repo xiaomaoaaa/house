@@ -19,8 +19,8 @@
           "scene": null
         },
         {
-          "name": "pages/login/login",
-          "pathName": "pages/login/login",
+          "name": "pages/entrustHome/entrustHome",
+          "pathName": "pages/entrustHome/entrustHome",
           "query": "",
           "scene": null
         },

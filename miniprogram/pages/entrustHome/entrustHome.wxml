@@ -1,0 +1,1 @@
+<view bindtap="wxsetClipboardData">点击复制药师注册查询的地址</view>

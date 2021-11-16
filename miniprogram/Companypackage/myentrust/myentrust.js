@@ -5,39 +5,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        // 已发布的卖房委托列表
+        // 已发布的求职信息
         saleEntrustList:[],
-        // saleEntrustList: [
-        //     { 
-        //         'EntrustType': 'sale',
-        //         'FormData':{
-        //             'detailLocation':'广西师范大学旁',
-        //             'houseStyle':'1室1厅'
-        //         },
-        //         '_id':'01ace4015dfb28cc04d2e10f25885167',
-        //         'checkedBy':'李海军',
-        //         'checkedTime':'2019/12/22 15:04:01',
-        //         'publish':true,
-        //         'publishTime':'2019/12/22 15:04:01',
-        //         'title':'新房源 免押金 可月付 先到先得 新房源 免押金 可月付 先到先得',
-        //         'updateTime':'2019/12/19 15:37:48'
-        //      },
-        //      { 
-        //         'EntrustType': 'sale',
-        //         'FormData':{
-        //             'detailLocation':'广西师范大学旁',
-        //             'houseStyle':'1室1厅'
-        //         },
-        //         '_id':'01ace4015dfb28cc04d2e10f25885167',
-        //         'checkedBy':'李海军',
-        //         'checkedTime':'2019/12/22 15:04:01',
-        //         'publish':true,
-        //         'publishTime':'2019/12/22 15:04:01',
-        //         'title':'新房源 免押金 可月付 先到先得 新房源 免押金 可月付 先到先得',
-        //         'updateTime':'2019/12/19 15:37:48'
-        //      }
-        // ],
-        // 已发布的出租委托列表
+         // 已发布的招聘信息
         rentOutEntrustList: []
     },
 

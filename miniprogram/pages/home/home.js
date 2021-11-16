@@ -10,26 +10,26 @@ Page({
                 "id": "#",
                 "icon": "../image/calculate-home.png",
                 "text": "招聘列表",
-                "url": "../../Companypackage/rentingHouse/rentingHouse"
+                "url": "../../Companypackage/secondHandHouse/secondHandHouse?mark=RentingHouse"
                 
             },
             {
                 "id": "#",
                 "icon": "../image/qualifications.png",
                 "text": "求职列表",
-                "url": "../../Companypackage/secondHandHouse/secondHandHouse"
+                "url": "../../Companypackage/secondHandHouse/secondHandHouse?mark=SecondHouse"
             },
             {
                 "id": "#",
                 "icon": "../image/relation.png",
                 "text": "证书查询",
-                "url": "../../Companypackage/Contact/Contact"
+                "url": "../../Companypackage/entrustHome?mark=zscx/entrustHome?mark=zscx"
             },
             {
                 "id": "#",
                 "icon": "../image/entrust-bar-selected.png",
                 "text": "继续教育",
-                "url": "../../Companypackage/Contact/Contact"
+                "url": "../../Companypackage/entrustHome?mark=zscx/entrustHome?mark=jxjy"
             }
         ],
         defaultimg1:"../image/default.jpg",
@@ -62,13 +62,9 @@ Page({
         // 全局变量
         let globalData = app.globalData
         this.setData({
-   
-          
-            HouseList: [],
             UserLogin: globalData.UserLogin,
             userInfo: globalData.userInfo
         })
-       
     },
 
     /**
@@ -283,10 +279,9 @@ Page({
         let that = this
         const db = wx.cloud.database()
         db.collection('Entrust')
-            .orderBy('recommendData.weight', 'desc')
+            .orderBy('updateTime', 'asc')
             .where({
-                publish: true,
-                
+                publish: true, 
             })
             .limit(20)
             .field({

@@ -12,67 +12,41 @@ Page({
         // 渲染详细列表
         DetialList: [{
             'id': 'name',
-            'title': '委托人',
+            'title': '联系人',
             'value': ''
         },
         {
             'id': 'phonenumber',
-            'title': '委托人联系电话',
+            'title': '联系电话',
             'value': ''
         },
-        {
-            'id': 'area',
-            'title': '产权面积(单位:㎡)',
-            'value': ''
-        },
-        {
-            'id': 'totalPrice',
-            'title': '外标价位',
-            'value': ''
-        },
+    
         {
             'id': 'location',
-            'title': '所属小区',
+            'title': '所在城市',
             'value': ''
         },
-        {
-            'id': 'detailLocation',
-            'title': '房源地址',
-            'value': ''
-        },
+      
         {
             'id': 'HouseType',
-            'title': '房子状况',
+            'title': '证书类型',
             'value': ''
         },
-        {
-            'id': 'houseStyle',
-            'title': '房子类型',
-            'value': ''
-        },
-        {
-            'id': 'furniture',
-            'title': '装修配置',
-            'value': ''
-        },
-        {
-            'id': 'Tags',
-            'title': '房子优势',
-            'value': ''
-        },
-        {
-            'id': 'LookUpStyle',
-            'title': '看房方式',
-            'value': ''
-        },
+       
         {
             'id': 'Invoice',
-            'title': '契税发票时间是否满两年',
+            'title': '是否有社保',
             'value': ''
         },
         {
             'id': 'Signing',
-            'title': '网签是否满三年',
+            'title': '是否可以到场配合检查',
+            'value': ''
+        }
+        ,
+        {
+            'id': 'furniture',
+            'title': '其他要求',
             'value': ''
         }
         ],
@@ -96,9 +70,9 @@ Page({
         // 负责人
         name: '',
         phone: '',
-        itemList: ['新房', '二手房', '租房'],
+        itemList:  ['求职', '招聘'],
         // 发布的板块
-        publishPlateList: ['NewHouse', 'SecondHouse', 'RentingHouse'],
+        publishPlateList: ['SecondHouse', 'RentingHouse'],
         publishPlate: ''
     },
 
@@ -106,9 +80,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (e) {
-        console.log(e, formatTime(new Date()))
         let id = e.id
-        // id = 'b040a67a5dfb2a4304d36b315da2038a'
         this.EntrustDetail(id)
     },
 
@@ -234,7 +206,7 @@ Page({
         // 进行确认提示
         wx.showModal({
             title: '修改提示',
-            content: '修改房源信息将会把已经发布和推荐到首页的房源撤下来,需要重新审核发布才能使客户搜索到,是否确定进行修改?',
+            content: '修改信息将会把已经发布和推荐到首页的信息撤下来,需要重新审核发布才能使客户搜索到,是否确定进行修改?',
             confirmText: '确定修改',
             cancelText: '取消',
             mask: true,
@@ -272,7 +244,7 @@ Page({
                         // 进行确认提示
                         wx.showModal({
                             title: '提示',
-                            content: '成功把该已审核发布的房源撤下来,是否马上对该房源的信息进行修改?',
+                            content: '成功把该已审核发布的信息撤下来,是否马上对该信息的信息进行修改?',
                             confirmText: '马上修改',
                             cancelText: '取消',
                             mask: true,
@@ -307,7 +279,7 @@ Page({
                 wx.hideLoading()
                 console.log('changeEntrust-err', err)
                 wx.showToast({
-                    title: '网络错误,撤销房源失败,请返回重新打开',
+                    title: '网络错误,撤销信息失败,请返回重新打开',
                     icon: 'none',
                     mask: true
                 })
@@ -321,7 +293,7 @@ Page({
         // 进行确认提示
         wx.showModal({
             title: '删除提示',
-            content: '房源信息一旦删除,与之有关的所有信息都会被删除,并且不能恢复,是否确定继续删除?',
+            content: '信息信息一旦删除,与之有关的所有信息都会被删除,并且不能恢复,是否确定继续删除?',
             confirmText: '确定删除',
             confirmColor: '#ff0080',
             cancelText: '取消',
@@ -335,51 +307,14 @@ Page({
         })
     },
 
-    // 删除照片
-    DeleteImages() {
-        wx.showLoading({
-            title: '删除关联照片...',
-            mask: true
-        })
-        let images = this.data.photoInfo
-        let that = this
-        wx.cloud.deleteFile({
-            fileList: images,
-            success: res => {
-                wx.hideLoading()
-                console.log(res)
-                // 图片删除成功
-                if (res.errMsg == "cloud.deleteFile:ok") {
-                    // 删除该房源
-                    that.DoDeleteHouse()
-                } else {
-                    wx.showToast({
-                        title: '图片删除失败,房源删除失败',
-                        mask: true,
-                        icon: 'none'
-                    })
-                }
-            },
-            fail: err => {
-                wx.hideLoading()
-                // handle error
-                wx.showToast({
-                    title: '图片删除失败,房源删除失败',
-                    mask: true,
-                    icon: 'none'
-                })
-            }
-        })
-    },
-
-    // 删除该房源
+    // 删除该信息
     DoDeleteHouse() {
         let that = this
         let id = this.data._id
         let publishPlate = this.data.publishPlate
         // 删除信息
         wx.showLoading({
-            title: '删除房源...',
+            title: '删除信息...',
             mask: true
         })
         // 撤销发布

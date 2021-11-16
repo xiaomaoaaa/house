@@ -20,46 +20,19 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        app.IsLogon()
-        console.log(app.globalData)
-        // 全局变量
-        let globalData = app.globalData
-        this.setData({
-            UserLogin: globalData.UserLogin,
-            userInfo: globalData.userInfo
+        
+    },
+    wxsetClipboardData: function (fileUrl) {
+        wx.setClipboardData({
+          data: "http://app1.nmpa.gov.cn/data_nmpa/face3/base.jsp?tableId=122&tableName=TABLE122&title=%D6%B4%D2%B5%D2%A9%CA%A6%D7%A2%B2%E1%C8%CB%D4%B1&bcId=152912087124325608102345261418",
+          success(res) {
+                wx.showToast({
+                  title: '复制成功！',
+                })
+          }
         })
-    },
-
-    // 页面跳转
-    NavigateToPages(e) {
-        let url = e.currentTarget.dataset.url
-        let id = e.currentTarget.dataset.id
-        let title = e.currentTarget.dataset.title
-        let backgroundcolor = e.currentTarget.dataset.backgroundcolor
-
-        console.log(e, url, id, title)
-
-        if (this.data.UserLogin) {
-            wx.navigateTo({
-                url: `${url}?id=${id}&title=${title}&backgroundcolor=${backgroundcolor}`,
-                success: function (res) {
-                    console.log('res', res)
-                },
-                fail: function (err) {
-                    console.log('err', err)
-                }
-            })
-        } else {
-            // 提示登录
-            wx.showToast({
-                title: '你还未登录，请先到个人中心登录！',
-                icon: 'none',
-                duration: 2500,
-                mask: true,
-            })
-        }
-    },
-
+      },
+ 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
