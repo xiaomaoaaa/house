@@ -1,51 +1,25 @@
-/* pages/Contact/Contact.wxss */
-.bg-blue {
-    background-color: #42A5F5;
-}
 
-.bg-green {
-    background-color: #42f5ec;
+.tip{
+  background: red;
+  color:#fff;
+  padding: 5rpx 20rpx;
+  font-size: 28rpx;
 }
-
-.text-grey {
-    color: grey;
+.title{
+  font-size: 32rpx;
+  text-align: center;
+  padding: 20rpx;
+  font-weight: bold;
 }
-
-.staff-card {
-    margin: 5px 15px;
-    padding: 8px;
-    border-radius: 5px;
-    display: flex;
-    background-color: #fff;
+.zscx{
+  padding: 5rpx 20rpx;
+  font-size: 30rpx;
 }
-
-.icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 5px;
-    background-color: honeydew;
+.table{
+  display: flex;
+  padding-bottom: 20rpx;
+  font-size: 28rpx;
 }
-
-.icon image {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-}
-
-.info-box {
-    margin-left: 10px;
-}
-
-.info{
-    font-size: 14px;
-    height: 35px;
-    font-weight: bold;
-    line-height: 35px;
-}
-
-.note{
-    height: 10px;
-    font-size: 10px;
-    line-height: 10px;
-    /* background-color: hotpink; */
+.table view{
+  padding-left: 20rpx;
 }

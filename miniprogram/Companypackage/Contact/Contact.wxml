@@ -1,12 +1,14 @@
-<!--pages/Contact/Contact.wxml-->
+<view class="tip">温馨提示：点击复制后，请在浏览器中打开网址</view>
+<view wx:if="{{mark=='zscx'}}" class="zscx">
+	<view class="title">药师注册查询的地址：http://app1.nmpa.gov.cn</view>
+	<view bindtap="wxsetClipboardData" class="copy" data-url="http://app1.nmpa.gov.cn/data_nmpa/face3/base.jsp?tableId=122&tableName=TABLE122&title=%D6%B4%D2%B5%D2%A9%CA%A6%D7%A2%B2%E1%C8%CB%D4%B1&bcId=152912087124325608102345261418">点击复制网址</view>
+</view>
 
-<view class="staff-card" wx:for='{{UserList}}' data-phone="{{item.phone}}" data-showphone="{{item.showphone}}" bindlongtap="CallPhone">
-	<view class="icon">
-		<image src="{{index%2?'../image/icon-idcard.png':'../image/idcard.png'}}"></image>
-	</view>
-	<view class="info-box">
-		<view class="info">姓名：{{item.showname}}</view>
-		<view class="info">电话：{{item.showphone}}</view>
-		<view class="note text-grey">说明：如需联系该员工,请长按点击名片。</view>
+<view wx:else>
+	<view class="title">全国药师继续教育网址大全</view>
+	<view wx:for="{{weburls}}" wx:key="index" class="table">
+		<view>{{item.name}}</view>
+		<view>{{item.weburl}}</view>
+		<view data-url="{{item.weburl}}" bindtap="wxsetClipboardData" class="copy">复制</view>
 	</view>
 </view>

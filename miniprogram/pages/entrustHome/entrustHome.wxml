@@ -1,1 +1,11 @@
-<view bindtap="wxsetClipboardData">点击复制药师注册查询的地址</view>
+药师注册查询的地址：http://app1.nmpa.gov.cn
+请复制后再浏览器中打开网址
+<view bindtap="wxsetClipboardData">点击复制网址</view>
+
+全国药师继续教育网址大全:
+<view wx:for="{{weburls}}" wx:key="index">
+  <view></view>
+  <view></view>
+  <view></view>
+</view>
+

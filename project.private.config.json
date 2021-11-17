@@ -41,6 +41,12 @@
           "pathName": "Companypackage/secondHandHouse/secondHandHouse",
           "query": "id=undefined",
           "scene": null
+        },
+        {
+          "name": "Companypackage/Contact/Contact",
+          "pathName": "Companypackage/Contact/Contact",
+          "query": "",
+          "scene": null
         }
       ]
     }

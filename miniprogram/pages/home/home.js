@@ -23,13 +23,13 @@ Page({
                 "id": "#",
                 "icon": "../image/relation.png",
                 "text": "证书查询",
-                "url": "../../Companypackage/entrustHome?mark=zscx/entrustHome?mark=zscx"
+                "url": "../../Companypackage/Contact/Contact?mark=zscx"
             },
             {
                 "id": "#",
                 "icon": "../image/entrust-bar-selected.png",
                 "text": "继续教育",
-                "url": "../../Companypackage/entrustHome?mark=zscx/entrustHome?mark=jxjy"
+                "url": "../../Companypackage/Contact/Contact?mark=jxjy"
             }
         ],
         defaultimg1:"../image/default.jpg",
@@ -200,7 +200,6 @@ Page({
     },
     // 跳转函数
     Navigate: function (e) {
-        console.log(e, e.currentTarget.dataset.id)
         let url = e.currentTarget.dataset.url
         let id = e.currentTarget.dataset.id
         let UserLogin = this.data.UserLogin
