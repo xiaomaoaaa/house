@@ -66,9 +66,10 @@ Page({
                     var id = that.data.userInfo.name
                 } else {
                     // 不是管理员，跳转到扫码页面
-                    var url = '../../Adminpackage/scanPage/scanPage'
-                    var title = '扫码'
-                    var id = 'mypage'
+                    wx.showToast({
+                        title: "你不是管理员",
+                        icon: 'none'
+                    })
                 }
 
                 wx.showToast({

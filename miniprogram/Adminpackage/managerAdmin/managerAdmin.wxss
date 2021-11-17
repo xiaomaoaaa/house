@@ -55,6 +55,8 @@ page {
     text-align: center;
     padding: 5px;
     background-color: #fff;
+    font-weight: bold;
+    
 }
 
 image {

@@ -2,12 +2,8 @@
 const { formatTime } = require("../../utils/util.js")
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
         // 照片列表
-        imgList: [],
         CompanyData: {
             '_id': '',
             'introduce': '',
@@ -150,90 +146,7 @@ Page({
     },
 
 
-    // 预览照片
-    ViewImage(e) {
-        wx.previewImage({
-            urls: this.data.imgList,
-            current: e.currentTarget.dataset.url
-        });
-    },
 
-    // 删除照片
-    DelImg(e) {
-        wx.showModal({
-            title: '提示',
-            content: '确定要删除这张照片吗？',
-            cancelText: '取消',
-            confirmText: '确定',
-            success: res => {
-                if (res.confirm) {
-                    this.data.imgList.splice(e.currentTarget.dataset.index, 1);
-                    this.setData({
-                        imgList: this.data.imgList
-                    })
-                }
-            }
-        })
-    },
-
-    // 选择照片
-    ChooseImage() {
-        wx.chooseImage({
-            count: 4, //默认9
-            sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album'], //从相册选择
-            success: (res) => {
-                if (this.data.imgList.length != 0) {
-                    this.setData({
-                        imgList: this.data.imgList.concat(res.tempFilePaths)
-                    })
-                } else {
-                    this.setData({
-                        imgList: res.tempFilePaths
-                    })
-                }
-            }
-        });
-    },
-
-    // 上传图片
-    UploadImages() {
-        wx.showLoading({
-            title: '保存图片...',
-            mask: true
-        })
-        let that = this
-        let imgPathList = []
-        // 保存照片
-        for (let i = 0; i < that.data.imgList.length; i++) {
-            const fileName = that.data.imgList[i];
-            const dotPosition = fileName.lastIndexOf('.');
-            const extension = fileName.slice(dotPosition);
-            const cloudPath = `${Date.now()}-${Math.floor(Math.random(0, 1) * 10000000)}${extension}`;
-            wx.cloud.uploadFile({
-                cloudPath,
-                filePath: fileName,
-                success(res) {
-                    wx.hideLoading()
-                    console.log('imgs', res, imgPathList.length, that.data.imgList.length)
-                    imgPathList.push(res.fileID)
-                    if (imgPathList.length == that.data.imgList.length) {
-                        // 保存信息
-                        // that.SubmitEntrust(imgPathList)
-                    }
-                },
-                fail: err => {
-                    wx.hideLoading()
-                    wx.showToast({
-                        title: '图片保存失败',
-                        icon: "none",
-                        duration: 1500
-                    })
-                },
-                complete: res => { }
-            })
-        }
-    },
 
     /**
      * 生命周期函数--监听页面隐藏

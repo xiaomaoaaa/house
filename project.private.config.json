@@ -47,6 +47,24 @@
           "pathName": "Companypackage/Contact/Contact",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "Adminpackage/managerAdmin/managerAdmin",
+          "pathName": "Adminpackage/managerAdmin/managerAdmin",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mypage/mypage",
+          "pathName": "pages/mypage/mypage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
         }
       ]
     }

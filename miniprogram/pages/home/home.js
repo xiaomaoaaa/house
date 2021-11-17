@@ -8,26 +8,26 @@ Page({
         headerList: [
             {
                 "id": "#",
-                "icon": "../image/calculate-home.png",
+                "icon": "../image/calculate-home.jpg",
                 "text": "招聘列表",
                 "url": "../../Companypackage/secondHandHouse/secondHandHouse?mark=RentingHouse"
                 
             },
             {
                 "id": "#",
-                "icon": "../image/qualifications.png",
+                "icon": "../image/qualifications.jpg",
                 "text": "求职列表",
                 "url": "../../Companypackage/secondHandHouse/secondHandHouse?mark=SecondHouse"
             },
             {
                 "id": "#",
-                "icon": "../image/relation.png",
+                "icon": "../image/relation.jpg",
                 "text": "证书查询",
                 "url": "../../Companypackage/Contact/Contact?mark=zscx"
             },
             {
                 "id": "#",
-                "icon": "../image/entrust-bar-selected.png",
+                "icon": "../image/entrust-bar-selected.jpg",
                 "text": "继续教育",
                 "url": "../../Companypackage/Contact/Contact?mark=jxjy"
             }

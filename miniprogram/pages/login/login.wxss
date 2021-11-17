@@ -33,33 +33,40 @@ page{
 }
 
 .card-box{
-    width: 100%;
-    height: 300px;
+    width: 660rpx;
+    height: 200px;
     text-align: center;
-    position: absolute;
+    position: fixed;
     top: 50%;
-    transform: translateY(-50%);
-    /* background-color: aqua; */
-}
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 30rpx;
 
-.card-box image{
-    width: 250px;
-    height: 300px;
-    background-color: #fff;
 }
 
 .card-content{
-    width: 100%;
-    height: 30px;
+   
     margin: 0 auto;
-    z-index: 9999;
-    position: absolute;
-    bottom: 15px;
-    /* background-color: sandybrown; */
+
+    
 }
 
 .card-content button{
-    margin: 0 auto;
-    background-color: #FF7583;
+    display: block;
+    width: 500rpx;
+    height:88rpx;
+    box-sizing: border-box;
+    border-radius: 0;
+    background: none;
+    border-radius: 44rpx;
     color: #fff;
+    background: #57be6a;
+    text-align: center;
+    font-size: 34rpx;
+    font-weight: bold;
+    margin-top: 50rpx;
 }

@@ -1,6 +1,6 @@
 <view class="select-box">
-		<image src="../image/qiuzhi.jpg" bindtap='NavigateToPages' data-id="sale" data-backgroundcolor="#48c0f2" data-title="发布求职信息" data-url="../../Companypackage/saleEntrust/saleEntrust"></image>
-		<image src="../image/zhaopin.jpg" bindtap='NavigateToPages' data-id="rentout" data-backgroundcolor="#f9ae95" data-title="发布招聘信息" data-url="../../Companypackage/rentOutEntrust/rentOutEntrust"></image>
+		<view class="qiuzhi"  bindtap='NavigateToPages' data-id="sale" data-backgroundcolor="#48c0f2" data-title="发布求职信息" data-url="../../Companypackage/saleEntrust/saleEntrust"> 发布求职</view>
+		<view class="zhaopin" bindtap='NavigateToPages' data-id="rentout" data-backgroundcolor="#f9ae95" data-title="发布招聘信息" data-url="../../Companypackage/rentOutEntrust/rentOutEntrust">发布招聘</view>
 </view>
 
 <!-- 功能选项b -->
@@ -17,7 +17,10 @@
 
 <!-- bannner -->
 <view class="banner-box">
-	<image src="../image/banner.png"></image>
+	<image src="../image/banner.jpg"></image>
+	<view class="tit">执业药师求职招聘平台</view>
+	
+
 </view>
 
 <!-- 公告 -->

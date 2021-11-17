@@ -1,6 +1,6 @@
 
 .tip{
-  background: red;
+  background: #0080ff;
   color:#fff;
   padding: 5rpx 20rpx;
   font-size: 28rpx;
@@ -11,15 +11,35 @@
   padding: 20rpx;
   font-weight: bold;
 }
-.zscx{
-  padding: 5rpx 20rpx;
-  font-size: 30rpx;
-}
+
 .table{
   display: flex;
   padding-bottom: 20rpx;
   font-size: 28rpx;
 }
+
+.table {
+ padding:0 20rpx;
+}
 .table view{
-  padding-left: 20rpx;
+  margin-bottom: 20rpx;
+}
+.table view:nth-child(1){
+  width: 100rpx;
+}
+.table view:nth-child(2){
+  width: 460rpx;
+}
+.copy{
+  background:#0080ff;
+  color: #fff;
+  text-align: center;
+  border-radius: 20rpx;
+  width: 100rpx;
+}
+.table2{
+  margin-top: 30rpx;
+}
+.table2 view:nth-child(1){
+  width: 200rpx;
 }

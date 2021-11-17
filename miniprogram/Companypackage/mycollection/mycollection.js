@@ -91,12 +91,7 @@ Page({
                 console.log('exi',res)
                 if (res.errMsg == 'collection.count:ok') {
                     if (res.total > 0) {
-                        if (type == 'sale') {
-                            var url = '../houseDetail/houseDetail'
-                        }
-                        if (type == 'rentout') {
-                            var url = '../rentingHouseDetail/rentingHouseDetail'
-                        }
+                       var url = '../houseDetail/houseDetail'
                         wx.navigateTo({
                             url: `${url}?id=${id}`,
                         })

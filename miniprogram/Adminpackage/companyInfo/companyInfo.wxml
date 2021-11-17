@@ -14,23 +14,5 @@
 	</view>
 </view>
 
-<!-- <view class="tips-box">
-	<view class="title">公司照片展示</view>
-	<view class="desc" style="color:#42A5F5;">使用前请先简单阅读以下使用说明：</view>
-	<view class="desc">设置的员工信息将显示在首页的 “联系员工” 模块；</view>
-	<view class="cu-form-group" style="padding-left:5px;">
-		<view class="grid col-4 grid-square flex-sub">
-			<view class="bg-img" wx:for="{{imgList}}" wx:key="index" bindtap="ViewImage" data-url="{{imgList[index]}}">
-				<image src='{{imgList[index]}}' mode='aspectFill'></image>
-				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
-					<text class="cuIcon-close"></text>
-				</view>
-			</view>
-			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
-				<text class="cuIcon-cameraadd"></text>
-			</view>
-		</view>
-	</view>
-</view> -->
 
 <view class="btn bg-green" bindtap="submitData">提交更新数据</view>

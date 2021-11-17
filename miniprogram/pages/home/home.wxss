@@ -7,15 +7,25 @@
     padding: 5px 16px;
     background-color: #fff;
     box-sizing: border-box;
+    color: #fff;
+    font-size: 40rpx;
+    font-weight: bold;
 }
-
-.select-box image{
-    display: block;
+.select-box view{
     width: 325rpx;
     height: 197rpx;
+    line-height: 197rpx;
     border-radius: 20rpx;
 }
+.select-box .qiuzhi{
+    
 
+    background-image: linear-gradient(#62b2f7, #4a8dd4);
+}
+.select-box .zhaopin{
+   
+    background-image: linear-gradient(#86ddcc, #3ac7be);
+}
 
 .header-box {
     height: 70px;
@@ -52,13 +62,26 @@
     height: 90px;
     /* margin-top: 8px; */
     text-align: center;
-    background-color: #fff;
+    background-image: linear-gradient(to right,#2e38f2, #3f69e4);
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tit{
+    font-size:36rpx;
+    color: #fff;
+    padding:30rpx 30rpx;
+    
 }
 
 .banner-box image {
-    width: 98%;
-    height: 70px;
-    margin-top: 10px;
+    display: block;
+    width:  280rpx;
+    height: 168rpx;
+    margin: 0 auto;
+
 }
 
 .noticeBar-box {
@@ -114,6 +137,7 @@
 .card-left image {
     width: 100%;
     height: 100%;
+    border-radius:10rpx ;
 }
 
 .card-right {

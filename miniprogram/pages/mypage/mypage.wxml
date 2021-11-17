@@ -1,7 +1,7 @@
 <!--pages/mypage/mypage.wxml-->
 <!-- 背景图 -->
 <view class="bg-box">
-	<image src="../image/mypagebg.png"></image>
+	个人中心
 </view>
 
 <!-- 为登录 -->
@@ -30,14 +30,14 @@
 	<view class="content-title font-size-16 ">我的服务</view>
 	<view class="content-row" data-id="mypage" data-url="../../Companypackage/myentrust/myentrust" bindtap="Navigate">
 		<view class="content-icon float-left">
-			<image src="../image/entrust.png"></image>
+			<image src="../image/entrust.jpg"></image>
 		</view>
 		<view class="content-text font-size-14">我的发布信息</view>
 	</view>
 
 	<view class="content-row" data-id="mycollection" data-url="../../Companypackage/mycollection/mycollection" bindtap="Navigate">
 		<view class="content-icon float-left">
-			<image src="../image/mycollection.png"></image>
+			<image src="../image/mycollection.jpg"></image>
 		</view>
 		<view class="content-text font-size-14">我的收藏</view>
 	</view>

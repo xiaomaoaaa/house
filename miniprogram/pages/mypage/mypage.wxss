@@ -1,15 +1,20 @@
 /* pages/mypage/mypage.wxss */
 .bg-box {
     width: 100%;
-    height: 150px;
+    height: 130rpx;
+    line-height: 130rpx;
+    text-align: center;
+    color: #fff;
     z-index: 1;
+    background-image: linear-gradient(#4d6ef4, #2d50da);
+    margin-bottom: 30rpx;
 }
 
-.bg-box image{
+/* .bg-box image{
     z-index: 1;
     width: 100%;
     height: 100%;
-}
+} */
 
 .head-box {
     z-index: 9999;

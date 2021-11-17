@@ -38,8 +38,9 @@
 <view class="auth-box" wx:if="{{showAuth}}">
 	<view class="card-box">
 		<view class="card-content">
+			使用前请先注册登录！
 			<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">确 定</button>
 		</view>
-		<image src='../image/modal.png'></image>
+		 
 	</view>
 </view>

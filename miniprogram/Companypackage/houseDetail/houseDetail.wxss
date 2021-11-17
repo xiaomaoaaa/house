@@ -120,7 +120,7 @@ page {
 .introduce-box-content {
     margin-left: 15px;
     padding: 5px;
-    font-size: 12px;
+    font-size: 16px;
     border-bottom: 1rpx #f0f0f0 dashed;
 }
 

@@ -2,7 +2,6 @@
   "pages": [
     "pages/home/home",
     "pages/mypage/mypage",
-    "pages/entrustHome/entrustHome",
     "pages/login/login"
   ],
   "subpackages": [
@@ -15,19 +14,7 @@
         "managerEntrust/managerEntrust",
         "EntrustDetail/EntrustDetail",
         "PublishedDetail/PublishedDetail",
-        "Recommend/Recommend",
-        "StaffInfo/StaffInfo",
-        "companyInfo/companyInfo",
-        "scanPage/scanPage"
-      ]
-    },
-    {
-      "root": "CalculatorPackage",
-      "name": "CalculatorPacket",
-      "pages": [
-        "calculator/calculator",
-        "calculatorlast/calculatorlast",
-        "rate/rate"
+        "companyInfo/companyInfo"
       ]
     },
     {
@@ -40,10 +27,7 @@
         "rentOutEntrust/rentOutEntrust",
         "steps/steps",
         "secondHandHouse/secondHandHouse",
-        "newHouse/newHouse",
-        "rentingHouse/rentingHouse",
         "houseDetail/houseDetail",
-        "rentingHouseDetail/rentingHouseDetail",
         "myentrust/myentrust",
         "mycollection/mycollection"
       ]
@@ -64,14 +48,14 @@
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "pages/image/home.png",
-        "selectedIconPath": "pages/image/home-selected.png"
+        "iconPath": "pages/image/home.jpg",
+        "selectedIconPath": "pages/image/home-selected.jpg"
       },
       {
         "pagePath": "pages/mypage/mypage",
         "text": "我的",
-        "iconPath": "pages/image/my.png",
-        "selectedIconPath": "pages/image/my-selected.png"
+        "iconPath": "pages/image/my.jpg",
+        "selectedIconPath": "pages/image/my-selected.jpg"
       }
     ]
   },

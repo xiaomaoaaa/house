@@ -34,7 +34,7 @@ Page({
       {name:'浙江',weburl:'http://www.zjda.com/'},
       {name:'安徽',weburl:'http://alpa.ahfda.com/alpa/'},
       {name:'青海',weburl:'http://www.tmst.org.cn/jxjy.html'},],
-      mark:"jxjy"
+      mark:"zscx"
     },
 
     /**

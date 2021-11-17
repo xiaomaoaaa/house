@@ -1,12 +1,17 @@
 /* pages/managerHome/managerHome.wxss */
 .list-box {
     height: 135px;
-    /* margin: 10px 0; */
-    /* background-color: #ffffff; */
-    /* text-align: center; */
-    /* line-height: 50px; */
-}
-.list-box image{
-    width: 100%;
-    height: 100%;
+    font-size:48rpx;
+    padding: 26rpx;
+    width: 690rpx;
+    margin: 30rpx auto 0;
+    background: #f9ae95;
+    box-shadow: 0 1rpx 9rpx 0 rgba(160, 128, 58, 0.3);
+    box-sizing: border-box;
+    border-radius: 12rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+ 
 }
