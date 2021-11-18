@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
     const openId = wxContext.OPENID
     const dbname = 'Entrust'
 
-    // 用户保存自己的委托
+    // 用户保存自己的
     if (event.type === 'add') {
         let EntrustType = event.EntrustType
         let FormData = event.FormData
@@ -52,7 +52,7 @@ exports.main = async (event, context) => {
         })
     }
 
-    // 用户查看自己的委托
+    // 用户查看自己的
     if (event.type === 'MyEntrust') {
         const EntrustList = await db.collection(dbname).orderBy('updateTime', 'desc').where({
             '_openid': openId,
@@ -77,7 +77,7 @@ exports.main = async (event, context) => {
         return EntrustList
     }
 
-    // 管理员获取用户的委托
+    // 管理员获取用户的
     if (event.type === 'AllEntrust') {
         let IsPublish = event.IsPublish
         const EntrustList = await db.collection(dbname).orderBy('updateTime', 'desc').where({

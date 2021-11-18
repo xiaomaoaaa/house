@@ -40,7 +40,7 @@ Page({
         this.MyEntrust(IsPublish)
     },
 
-    // 查看委托
+    // 查看
     MyEntrust(IsPublish) {
         console.log(IsPublish)
         wx.showLoading({

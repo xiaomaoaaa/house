@@ -254,7 +254,7 @@ Page({
                                         url: `../../Adminpackage/EntrustDetail/EntrustDetail?id=${id}`,
                                     })
                                 } else {
-                                    // 返回委托列表
+                                    // 返回列表
                                     wx.navigateBack({
                                         delta: -1
                                     })

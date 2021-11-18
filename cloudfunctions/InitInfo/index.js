@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
     const openId = wxContext.OPENID
 
-    // 用户保存自己的委托
+    // 用户保存自己的
     if (event.type === 'INIT') {
         const dbname = 'UserList'
         return await db.collection(dbname).where({

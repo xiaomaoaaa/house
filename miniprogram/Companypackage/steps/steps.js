@@ -37,7 +37,7 @@ Page({
 
     let id = e.id
 
-    // 从发布委托也进来
+    // 从发布也进来
     if (id == 'entrust') {
       let steps = this.data.steps
       steps[0].desc = `${formatTime(new Date())}您的发布申请我们已经收到,我们会尽快审核发布内容！`

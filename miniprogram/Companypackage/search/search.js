@@ -1,3 +1,4 @@
+// Companypackage/rentingHouse/rentingHouse.js
 // pages/search/search.js
 Page({
 
@@ -5,48 +6,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        HouseType: '',
-        HouseTypeList: [{
-            text: '所有证书类型',
-            value: '0'
-        }, {
-            text: '执业中药师',
-            value: '执业中药师'
-        },
-        {
-            text: '执业西药师',
-            value: '执业西药师'
-        },
-        {
-            text: '初级中药师',
-            value: '初级中药师'
-        },
-        {
-            text: '护士证书',
-            value: '护士证书'
-        },
-        {
-            text: '医师证书',
-            value: '医师证书'
-        },
-        {
-            text: '其他',
-            value: '其他'
-        }
-        ],
-        InvoiceList: [{
-            text: '全部',
-            value: '0'
-        }, {
-            text: '是',
-            value: '是'
-        },
-        {
-            text: '否',
-            value: '否'
-        },
-        ],
-        Invoice: '0',
+
+
+
         // 查询到的数据
         HouseList: [],
         // 默认数据总数
@@ -55,22 +17,17 @@ Page({
         page: 0,
         // 显示数据加载结束
         showEnd: false,
+        mark: ""
         // 搜索类型,默认为query，即搜索全部
-        type: 'query',
-        defaultimg2:"../image/default2.jpg",
-        mark:""
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onLoad: function (e) {
-        this.data.mark=e.mark
-        let page = this.data.page
-        let type = this.data.type
+        this.data.mark = e.mark
         this.DocCount()
-        this.QueryHose(page, type)
-        if(e.mark=="RentingHouse"){
+        if (e.mark == "RentingHouse") {
             wx.setNavigationBarColor({
                 frontColor: '#ffffff',
                 backgroundColor: "#f9ae95",
@@ -80,12 +37,12 @@ Page({
                 }
             })
             wx.setNavigationBarTitle({
-                title: '招聘列表'
-              })
-        }else{
+                title: '招聘搜索'
+            })
+        } else {
             wx.setNavigationBarTitle({
-                title: '求职列表'
-              })
+                title: '求职搜索'
+            })
             wx.setNavigationBarColor({
                 frontColor: '#ffffff',
                 backgroundColor: "#48c0f2",
@@ -101,7 +58,8 @@ Page({
     DocCount() {
         let that = this
         const db = wx.cloud.database()
-        db.collection('SecondHouse').count({
+        let mark = this.data.mark
+        db.collection(mark).count({
             success(res) {
                 console.log('count-res', res)
                 if (res.errMsg == "collection.count:ok") {
@@ -118,23 +76,24 @@ Page({
     },
 
     // 获取房源数据列表
-    QueryHose(page, type) {
+    QueryHose(page) {
         wx.showLoading({
             title: '正在加载...',
             mask: true
         })
         let that = this
         let HouseList = this.data.HouseList
-        let Invoice = this.data.Invoice
-        let HouseType = this.data.HouseType
+        let searchtext = this.data.searchtext
+        let mark = this.data.mark
+
+
         wx.cloud.callFunction({
             name: 'HouseInfo',
             data: {
-                type: type,
-                key: that.data.mark,
+                type: "query",
+                key: mark,
                 page: page,
-                Invoice: Invoice,
-                HouseType:HouseType
+                searchtext: searchtext
             },
             success: res => {
                 wx.hideLoading()
@@ -148,7 +107,6 @@ Page({
                             HouseList.push(data[i])
                         }
                         that.setData({
-                            type: type,
                             page: page,
                             HouseList: HouseList
                         })
@@ -197,8 +155,7 @@ Page({
         // 重新获取数据
         let page = 0
         this.DocCount()
-        let type = this.data.type
-        this.QueryHose(page, type)
+        this.QueryHose(page)
         wx.hideNavigationBarLoading()
         wx.stopPullDownRefresh()
     },
@@ -211,10 +168,9 @@ Page({
         let total = this.data.total
         let page = this.data.page
         let HouseList = this.data.HouseList
-        let type = this.data.type
         if (HouseList.length < total) {
             page = page + 10
-            this.QueryHose(page, type)
+            this.QueryHose(page)
         } else {
             this.setData({
                 showEnd: true
@@ -225,51 +181,43 @@ Page({
     // 跳转函数
     Navigate: function (e) {
         console.log(e, e.currentTarget.dataset.url)
-        let url = '../houseDetail/houseDetail'
+        let url = '../rentingHouseDetail/rentingHouseDetail'
         let id = e.currentTarget.dataset.id
         wx.navigateTo({
             url: `${url}?id=${id}`,
         })
     },
-    Navigatetosearch: function (e) {
-        let url = '../search/search'
-        let id = e.currentTarget.dataset.id
-        wx.navigateTo({
-            url: `${url}?mark=${this.data.mark}`,
-        })
+    // InputData: function (e) {
+    //     let searchtext = e.detail.value
+    //     this.setData({
+    //         searchtext:searchtext
+    //     })
+    // },
+    startSearch() {
+
+        setTimeout(() => {
+            if (this.data.searchtext.length == 0) {
+                return
+            }
+            if (this.data.searchtext.length < 2) {
+                wx.showToast({
+                    title: '至少输入2个字符',
+                    icon: 'none',
+                    duration: 3000
+                })
+                return
+            }
+            let page = 0
+            this.setData({
+                HouseList: []
+            })
+            this.QueryHose(page)
+        }, 100)
+
+
     },
 
-    ChangeHouseType(e) {
-        console.log(e, e.detail)
-        let key = e.detail
-        let page = 0
-        if (key == '0') {
-            var type = 'query'
-        } else {
-            var type = 'housetype'
-        }
-        this.setData({
-            HouseType: key,
-            HouseList: []
-        })
-        this.QueryHose(page, type)
-    },
-    ChangeInvoice(e) {
-        console.log(e, e.detail)
-        let key = e.detail
-        let page = 0
-        if (key == '0') {
-            var type = 'query'
-        } else {
-            var type = 'invoice'
-        }
-        this.setData({
-            page:0,
-            Invoice: key,
-            HouseList: []
-        })
-        this.QueryHose(page, type)
-    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

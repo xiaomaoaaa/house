@@ -65,6 +65,18 @@
           "pathName": "pages/login/login",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "Companypackage/search/search",
+          "pathName": "Companypackage/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "Companypackage/secondHandHouse/secondHandHouse",
+          "pathName": "Companypackage/secondHandHouse/secondHandHouse",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -1,3 +1,7 @@
+
+<view class="searchcon">
+		<view class="serachinput" bindtap="Navigatetosearch" >请输入城市名称进行搜索</view>
+	</view>
 <!-- 筛选列表 -->
 <view>
     <van-dropdown-menu>

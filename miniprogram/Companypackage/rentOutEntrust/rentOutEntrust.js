@@ -11,7 +11,7 @@ Page({
      */
     data: {
         // 导航栏标题
-        NavigationBarTitle: '发布委托',
+        NavigationBarTitle: '发布',
         // 渲染输入框
         InputList: [
             {
@@ -31,7 +31,7 @@ Page({
         {
             'id': 'location',
             'title': '所属城市:',
-            'placeholder': '如:杭州',
+            'placeholder': '如:杭州，请务必填写城市方便搜索！',
             'type': 'text',
             'maxlength': 50
         },
@@ -65,9 +65,9 @@ Page({
         FormData: {
             // 所在城市
             'location': '',
-            // 委托人姓名
+            // 人姓名
             'name': '',
-            // 委托人电话
+            // 人电话
             'phonenumber': '',
             // 房子标签
             'Tags': [],
@@ -265,7 +265,7 @@ Page({
                 wx.hideLoading()
                 console.log(res)
                 wx.showToast({
-                    title: '委托提交成功',
+                    title: '提交成功',
                     icon: 'success',
                     duration: 2000
                 })
@@ -281,7 +281,7 @@ Page({
                 wx.hideLoading()
                 console.log(err)
                 wx.showToast({
-                    title: '委托提交失败',
+                    title: '提交失败',
                     icon: 'success',
                     duration: 2000
                 })

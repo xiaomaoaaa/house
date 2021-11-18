@@ -139,3 +139,25 @@ view {
 .font-weight {
     font-weight: bold;
 }
+.searchcon{
+    box-sizing: border-box;
+    width: 750rpx;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    padding:14rpx 30rpx 20rpx 30rpx ;
+
+  }
+ 
+  .searchcon view{
+    font-size: 28rpx;
+    color: #999;
+    width: 690rpx;
+    height: 68rpx;
+    line-height: 68rpx;
+    background:#F7F7F7 ;
+    border-radius:34rpx;
+    padding-left: 30rpx;
+    box-sizing: border-box;
+    text-align: left;
+  }

@@ -24,7 +24,7 @@ exports.main = async (event, context) => {
         if(searchtext){
             matchObj={
                 'EntrustInfo.publish': true,
-                'EntrustInfo.title':db.RegExp({
+                'EntrustInfo.FormData.location':db.RegExp({
                     regexp: searchtext,
                     options: 'i',
                   })

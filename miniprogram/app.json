@@ -29,7 +29,8 @@
         "secondHandHouse/secondHandHouse",
         "houseDetail/houseDetail",
         "myentrust/myentrust",
-        "mycollection/mycollection"
+        "mycollection/mycollection",
+        "search/search"
       ]
     }
   ],

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "招聘列表",
+  "navigationBarBackgroundColor": "#FEB054",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh": true,
+  "usingComponents": {}
+}

@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
     const openId = wxContext.OPENID
 
-    // 管理员发布委托
+    // 管理员发布
     if (event.type === 'add') {
         let ID = event.ID
         let publishTime = event.updateTime
@@ -35,7 +35,7 @@ exports.main = async (event, context) => {
             return res;
         })
 
-        // 更新委托信息
+        // 更新信息
         let task = await db.collection('Entrust')
             .doc(event.ID)
             .update({
@@ -55,7 +55,7 @@ exports.main = async (event, context) => {
         return res;
     }
 
-    // 修改已经审核发布的委托信息
+    // 修改已经审核发布的信息
     if (event.type === 'changeEntrust') {
         // 删除已发布到不同平台的数据
         let dbname = event.publishPlate
@@ -89,7 +89,7 @@ exports.main = async (event, context) => {
     }
 
 
-    // 删除已经审核发布的委托信息
+    // 删除已经审核发布的信息
     if (event.type === 'deleteEntrust') {
         // 删除已发布到不同平台的数据
         let dbname = event.publishPlate

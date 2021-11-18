@@ -33,7 +33,7 @@ Page({
         this.MyEntrust(key)
     },
 
-    // 查看我的委托
+    // 查看我的
     MyEntrust(key) {
         console.log(key)
         wx.showLoading({
