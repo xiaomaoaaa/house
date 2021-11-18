@@ -1,6 +1,6 @@
 <!--pages/mycollection/mycollection.wxml-->
 <view wx:for='{{List}}' wx:key='list' data-doc="{{item._id}}" data-id="{{item.ID}}" data-type="{{item.type}}" class="list-box" bindtap="Edit">
-	<van-card desc1="所在城市：{{item.location}}" desc2="证书类型：{{item.HouseType}} {{item.type=='sale'?'(求职)':'(招聘)'}}" desc3="推荐时间：{{item.updateTime}}" desc4="说明：" title="{{item.title}}" thumb="{{item.houseImages[0]?item.houseImages[0]:'../image/image.png'}}" />
+	<van-card desc1="所在城市：{{item.location}}" desc2="证书类型：{{item.HouseType}} {{item.publishPlate=='SecondHouse'?'(求职)':'(招聘)'}}" desc3="推荐时间：{{item.updateTime}}" desc4="说明：" title="{{item.title}}" thumb="{{item.publishPlate=='SecondHouse'?'../../pages/image/default2.jpg':'../../pages/image/default1.jpg'}}" />
 	<view></view>
 </view>
 

@@ -96,6 +96,7 @@ Page({
                 if (res.errMsg == "collection.get:ok") {
                     if (res.data.length > 0) {
                         let data = res.data[0]
+                     
                         if(data.publishPlate=="RentingHouse"){
                             wx.setNavigationBarColor({
                                 frontColor: '#ffffff',
@@ -170,6 +171,7 @@ Page({
         let phone = FormData.phonenumber
         let DetialList = this.data.DetialList
         DetialList[7].value=data.publishTime
+        this.data.publishPlate=data.publishPlate
         for (let key in FormData) {
             for (let i = 0; i < DetialList.length; i++) {
                 if (DetialList[i].id == key) {
@@ -272,6 +274,7 @@ Page({
         })
         // 未收藏，开始收藏
         const db = wx.cloud.database()
+        let publishPlate=this.data.publishPlate
         db.collection('Collections')
             .add({
                 data: {
@@ -281,6 +284,7 @@ Page({
                     location: that.data.location,
                     houseImages: that.data.houseImages,
                     type: 'sale',
+                    publishPlate:publishPlate,
                     updateTime: formatTime(new Date())
                 },
                 success(res) {

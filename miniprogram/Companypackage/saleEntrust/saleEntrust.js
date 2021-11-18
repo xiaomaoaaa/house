@@ -69,7 +69,7 @@ Page({
             // 人电话
             'phonenumber': '',
             // 房子标签
-            'Tags': [],
+            'Tags': [1],
             // 证书类型
             'HouseType': '',
             // 是否有社保

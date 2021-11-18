@@ -6,7 +6,8 @@ App({
             console.error('请使用 2.2.3 或以上的基础库以使用云能力')
         } else {
             wx.cloud.init({
-                env: 'cloud1-2g7hsrjqa5c1a788',
+                env: 'cloud1-2g7hsrjqa5c1a788',//正式环境
+                // env:'dev-1gvja25423a10ae3',//开发环境
                 traceUser: true,
             })
         }
