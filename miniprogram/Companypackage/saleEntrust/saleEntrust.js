@@ -30,7 +30,7 @@ Page({
             {
                 'id': 'location',
                 'title': '所在城市:',
-                'placeholder': '如:杭州，请务必填写城市方便搜索！',
+                'placeholder': '如:杭州,请填写正确城市方便搜索！',
                 'type': 'text',
                 'maxlength': 50
             },
