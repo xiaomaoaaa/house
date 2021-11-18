@@ -4,7 +4,7 @@
 		<view class="list-box" wx:for="{{saleEntrustList}}" wx:key='key' data-data="{{saleEntrustList[index]}}" bindtap="Navigate">
 			<!-- tag -->
 			<view class="tag-box">
-				<image src="{{item.publish?'../image/published.png':'../image/checking.png'}}"></image>
+				<image src="{{item.publish?'../image/published.jpg':'../image/checking.jpg'}}"></image>
 			</view>
 			<view decode="true" class="title">{{index+1}}、{{item.title?item.title:item.FormData.name}}</view>
 			<view decode="true" class="desc">证书类型：{{item.FormData.HouseType}}</view>
@@ -24,7 +24,7 @@
 		<view class="list-box" wx:for="{{rentOutEntrustList}}" wx:key='key' data-data="{{rentOutEntrustList[index]}}" bindtap="Navigate">
 			<!-- tag -->
 			<view class="tag-box">
-				<image src="{{item.publish?'../image/published.png':'../image/checking.png'}}"></image>
+				<image src="{{item.publish?'../image/published.jpg':'../image/checking.jpg'}}"></image>
 			</view>
 			<view decode="true" class="title">{{index+1}}、{{item.title?item.title:item.FormData.name}}</view>
 			<view decode="true" class="desc">证书类型：{{item.FormData.HouseType}}</view>

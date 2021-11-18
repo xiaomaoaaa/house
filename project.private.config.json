@@ -13,66 +13,6 @@
     "miniprogram": {
       "list": [
         {
-          "name": "Adminpackage/managerHome/managerHome",
-          "pathName": "Adminpackage/managerHome/managerHome",
-          "query": "id=%E6%AF%9B%E5%BB%BA%E9%A3%9E",
-          "scene": null
-        },
-        {
-          "name": "pages/entrustHome/entrustHome",
-          "pathName": "pages/entrustHome/entrustHome",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "Companypackage/saleEntrust/saleEntrust",
-          "pathName": "Companypackage/saleEntrust/saleEntrust",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "Companypackage/rentOutEntrust/rentOutEntrust",
-          "pathName": "Companypackage/rentOutEntrust/rentOutEntrust",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "Companypackage/secondHandHouse/secondHandHouse",
-          "pathName": "Companypackage/secondHandHouse/secondHandHouse",
-          "query": "id=undefined",
-          "scene": null
-        },
-        {
-          "name": "Companypackage/Contact/Contact",
-          "pathName": "Companypackage/Contact/Contact",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "Adminpackage/managerAdmin/managerAdmin",
-          "pathName": "Adminpackage/managerAdmin/managerAdmin",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/mypage/mypage",
-          "pathName": "pages/mypage/mypage",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/login/login",
-          "pathName": "pages/login/login",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "Companypackage/search/search",
-          "pathName": "Companypackage/search/search",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "Companypackage/secondHandHouse/secondHandHouse",
           "pathName": "Companypackage/secondHandHouse/secondHandHouse",
           "query": "",

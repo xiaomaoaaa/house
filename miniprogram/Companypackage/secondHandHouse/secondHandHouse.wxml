@@ -14,7 +14,8 @@
 <view class="card-box" wx:for="{{HouseList}}" data-url="{{item.url}}" data-id="{{item.ID}}" bindtap="Navigate">
     <view class="card">
         <view class="card-left">
-            <image mode="scaleToFill" src="{{defaultimg2}}" ></image>
+					<image mode="scaleToFill" wx:if="{{mark=='RentingHouse'}}" src="../../pages/image/default.jpg" ></image>
+           <image mode="scaleToFill" wx:else src="../../pages/image/default2.jpg"></image>
             <view class="card-tag-box card-tag card-tag-mark card-tag-bg" wx:if="{{item.showTag}}">火爆</view>
         </view>
         <view class="card-right">

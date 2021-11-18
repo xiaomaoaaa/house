@@ -57,7 +57,6 @@ Page({
         showEnd: false,
         // 搜索类型,默认为query，即搜索全部
         type: 'query',
-        defaultimg2:"../image/default2.jpg",
         mark:""
     },
 
@@ -65,7 +64,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onLoad: function (e) {
-        this.data.mark=e.mark
+        this.setData({
+            mark:e.mark
+        })
         let page = this.data.page
         let type = this.data.type
         this.DocCount()

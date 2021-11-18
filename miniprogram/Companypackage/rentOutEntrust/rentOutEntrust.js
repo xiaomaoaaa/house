@@ -251,6 +251,17 @@ Page({
         let FormData = this.data.FormData
         let EntrustType = this.data.EntrustType
         let that = this
+        for (let key in FormData) {
+            if (FormData[key] == '') {
+                wx.showToast({
+                    title: '请把所有数据填写完整',
+                    icon: 'none',
+                    mask: true,
+                    duration: 2000
+                })
+                return;
+            }
+        }
         wx.cloud.callFunction({
             name: 'Entrust',
             data: {
