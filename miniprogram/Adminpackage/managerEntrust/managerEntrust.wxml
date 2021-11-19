@@ -1,5 +1,7 @@
 <!--Adminpackage/managerEntrust/managerEntrust.wxml-->
+
 <van-tabs animated='true' color='#0081ff' border='false' bind:click='ChangeTab'>
+
 	<van-tab title="待审核" info="{{CheckingEntrustList.length?CheckingEntrustList.length:''}}">
 		<view class="list-box" wx:for="{{CheckingEntrustList}}" wx:key='key' data-type="unpublished" data-id="{{item['_id']}}" bindtap="Navigate">
 			<view class="title">{{index+1}}、{{item.publishPlate=="RentingHouse"?"招聘人":"求职人"}}姓名：{{item.FormData.name}}</view>
@@ -23,7 +25,7 @@
 			<view class="desc">审核状态：<text class="text-blue">已审核 {{item.checkedBy?item.checkedBy:''}}（{{item.checkedTime?item.checkedTime:''}}）</text></view>
 			<view class="desc">发布状态：<text class="text-blue">已发布 {{item.checkedBy?item.checkedBy:''}}（{{item.publishTime?item.publishTime:''}}）</text></view>
 			<view class="desc">证书类型：{{item.FormData.HouseType}}</view>
-			<view class="desc">其他要求：{{item.FormData.furniture}}</view>
+			<view class="desc">其他信息：{{item.FormData.furniture}}</view>
 			<view class="desc text-red">说明：点击卡片即可查看和修改发布详情；</view>
 	
 		</view>

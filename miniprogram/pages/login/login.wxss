@@ -70,3 +70,9 @@ page{
     font-weight: bold;
     margin-top: 50rpx;
 }
+.card-content button:nth-child(2){
+    color: #fff;
+    background: #ccc;
+    text-align: center;
+ 
+}

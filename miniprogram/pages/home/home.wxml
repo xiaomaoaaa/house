@@ -36,9 +36,8 @@
 <view class="recommendation-list-box" wx:for="{{HouseList}}" wx:key='key' data-url="{{item.url}}" data-id="{{item._id}}" bindtap="NavigateToDetail">
 	<view class="card">
 		<view class="card-left">
-			<image mode="scaleToFill" src="{{defaultimg1}}" wx:if="{{item.publishPlate=='RentingHouse'}}"></image>
-			<image mode="scaleToFill" src="{{defaultimg2}}" wx:else></image>
-			<!-- <view class="card-tag-box card-tag card-tag-mark card-tag-bg">招聘</view> -->
+			<image mode="scaleToFill" src="../image/default.jpg" ></image>
+		
 		</view>
 		<view class="card-right">
 			<view class="card-title">姓名：{{item.title}}</view>
@@ -65,7 +64,7 @@
 <view class="recommendation-list-box" wx:for="{{newsHouseList}}" wx:key='key' data-url="{{item.url}}" data-id="{{item._id}}" bindtap="NavigateToDetail">
 	<view class="card">
 		<view class="card-left">
-			<image mode="scaleToFill" src="{{defaultimg2}}" ></image>
+			<image mode="scaleToFill" src="../image/default2.jpg" ></image>
 			<!-- <view class="card-tag-box card-tag card-tag-mark card-tag-bg">求职</view> -->
 		</view>
 		<view class="card-right">

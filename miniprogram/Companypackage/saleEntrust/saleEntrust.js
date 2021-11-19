@@ -37,7 +37,7 @@ Page({
 
             {
                 'id': 'furniture',
-                'title': '其他要求',
+                'title': '其他信息',
                 'placeholder': '如:药师必须在杭州附近',
                 'type': 'text',
                 'maxlength': 50
@@ -48,7 +48,7 @@ Page({
         PickerList: [{
             'id': 'HouseType',
             'title': '证书类型',
-            'pickerlist': ['执业中药师', '执业西药师', '初级中药师', '初级西药师', '护士证书', '医师证书', '其他']
+            'pickerlist': ['执业中药师', '执业西药师','执业药师双证', '初级中药师', '初级西药师', '护士证书', '医师证书','其他']
         },
         {
             'id': 'Invoice',
@@ -76,7 +76,7 @@ Page({
             'Invoice': '',
             // 是否可以到场配合检查
             'Signing': '',
-            // 其他要求
+            // 其他信息
             'furniture': '',
         },
     },

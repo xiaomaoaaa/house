@@ -59,6 +59,8 @@ exports.main = async (event, context) => {
     if (event.type === 'changeEntrust') {
         // 删除已发布到不同平台的数据
         let dbname = event.publishPlate
+        let plate=dbname=='SecondHouse'?'求职':'招聘'
+        
         let del = await db.collection(dbname).where({
             ID: event.ID
         }).remove()
@@ -75,10 +77,10 @@ exports.main = async (event, context) => {
                         'phone': ''
                     },
                     checkedTime: '',
-                    plate: '',
+                    plate: plate,
                     publish: false,
                     publishTime: '',
-                    publishPlate: '',
+                    publishPlate: event.publishPlate,
                     recommendData: {
                         'Isrecommend': false,
                         'recommender': '',

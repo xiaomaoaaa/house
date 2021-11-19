@@ -13,7 +13,7 @@
 			<view decode="true" class="desc">所在城市：{{item.FormData.location}}</view>
 			<view decode="true" class="desc">是否有社保：{{item.FormData.Invoice}}</view>
 			<view decode="true" class="desc">是否可以到场配合检查：{{item.FormData.Signing}}</view>
-			<view decode="true" class="desc">其他要求：{{item.FormData.furniture}}</view>
+			<view decode="true" class="desc">其他信息：{{item.FormData.furniture}}</view>
 			<view decode="true" class="desc">发布时间：{{item.updateTime}}</view>
 			<view decode="true" class="desc">说明：点击卡片可查看详情</view>
 		</view>
@@ -33,7 +33,7 @@
 			<view decode="true" class="desc">所在城市：{{item.FormData.location}}</view>
 			<view decode="true" class="desc">是否有社保：{{item.FormData.Invoice}}</view>
 			<view decode="true" class="desc">是否可以到场配合检查：{{item.FormData.Signing}}</view>
-			<view decode="true" class="desc">其他要求：{{item.FormData.furniture}}</view>
+			<view decode="true" class="desc">其他信息：{{item.FormData.furniture}}</view>
 			<view decode="true" class="desc">发布时间：{{item.updateTime}}</view>
 			<view decode="true" class="desc">说明：点击卡片可查看详情</view>
 		</view>

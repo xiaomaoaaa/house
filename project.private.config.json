@@ -17,6 +17,24 @@
           "pathName": "Companypackage/secondHandHouse/secondHandHouse",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "Adminpackage/managerHome/managerHome",
+          "pathName": "Adminpackage/managerHome/managerHome",
+          "query": "id=maojianfei",
+          "scene": null
+        },
+        {
+          "name": "Adminpackage/managerEntrust/managerEntrust",
+          "pathName": "Adminpackage/managerEntrust/managerEntrust",
+          "query": "",
+          "scene": null
         }
       ]
     }

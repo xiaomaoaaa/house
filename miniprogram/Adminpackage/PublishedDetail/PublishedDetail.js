@@ -46,7 +46,7 @@ Page({
         ,
         {
             'id': 'furniture',
-            'title': '其他要求',
+            'title': '其他信息',
             'value': ''
         }
         ],
@@ -250,7 +250,8 @@ Page({
                             mask: true,
                             success(res) {
                                 if (res.confirm) {
-                                    wx.navigateTo({
+                                   
+                                    wx.redirectTo({
                                         url: `../../Adminpackage/EntrustDetail/EntrustDetail?id=${id}`,
                                     })
                                 } else {
@@ -301,7 +302,7 @@ Page({
             success(res) {
                 if (res.confirm) {
                     // 删除照片
-                    that.DeleteImages()
+                    that.DoDeleteHouse()
                 }
             }
         })

@@ -1,4 +1,3 @@
-// pages/login/login.js
 var app = getApp()
 Page({
 
@@ -14,8 +13,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (e) {
-        console.log(e)
-        let id = e.id
+  
     },
 
     // 授权获取用户信息
@@ -117,7 +115,9 @@ Page({
             }
         })
     },
-
+    reback: function (e) {
+        wx.navigateBack()
+    },
     // 获取输入框数据
     InputData: function (e) {
         console.log(e, e.currentTarget.id, e.detail.value)

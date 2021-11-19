@@ -80,9 +80,11 @@ exports.main = async (event, context) => {
     // 管理员获取用户的
     if (event.type === 'AllEntrust') {
         let IsPublish = event.IsPublish
+       let limit=IsPublish?20:50;
         const EntrustList = await db.collection(dbname).orderBy('updateTime', 'desc').where({
             'publish': IsPublish
-        }).field({
+        }).limit(limit)
+        .field({
             _id: true,
             plate: true,
             publishPlate: true,

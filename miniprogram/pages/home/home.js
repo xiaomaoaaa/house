@@ -32,8 +32,6 @@ Page({
                 "url": "../../Companypackage/Contact/Contact?mark=jxjy"
             }
         ],
-        defaultimg1:"../image/default.jpg",
-        defaultimg2:"../image/default2.jpg",
         // 查询到的招聘数据
         HouseList: [],
         // 查询到的求职数据
@@ -58,7 +56,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        // app.IsLogon()
+        app.IsLogon()
         // 全局变量
         let globalData = app.globalData
         this.setData({
@@ -102,9 +100,9 @@ Page({
                     })
                 } else {
                     // 未授权，跳转到授权页面
-                    wx.redirectTo({
-                        url: '../login/login?id=auth'
-                    })
+                    // wx.redirectTo({
+                    //     url: '../login/login?id=auth'
+                    // })
                 }
             },
             fail: function (err) {
@@ -150,7 +148,7 @@ Page({
 
                 } else {
                     // 未注册，页面跳转到授权注册页面
-                    wx.redirectTo({
+                    wx.navigateTo({
                         url: '../login/login?id=register'
                     })
                 }
@@ -190,12 +188,21 @@ Page({
             })
         } else {
             // 提示登录
-            wx.showToast({
-                title: '你还未登录，请先到个人中心登录！',
-                icon: 'none',
-                duration: 2500,
-                mask: true,
-            })
+            wx.showModal({
+                title: '温馨提示',
+                content: '发布信息需要先注册登录!',
+                success (res) {
+                  if (res.confirm) {
+                     wx.navigateTo({
+                        url: '../login/login'
+                    })
+                  } else if (res.cancel) {
+                    console.log('用户点击取消')
+                  }
+                }
+              })
+
+          
         }
     },
     // 跳转函数
@@ -203,19 +210,19 @@ Page({
         let url = e.currentTarget.dataset.url
         let id = e.currentTarget.dataset.id
         let UserLogin = this.data.UserLogin
-        if (UserLogin) {
+        // if (UserLogin) {
             wx.navigateTo({
                 url: `${url}?id=${id}`,
             })
-        } else {
-            // 提示登录
-            wx.showToast({
-                title: '你还未登录，请先到个人中心登录！',
-                icon: 'none',
-                duration: 2500,
-                mask: true,
-            })
-        }
+        // } else {
+        //     // 提示登录
+        //     wx.showToast({
+        //         title: '你还未登录，请先到个人中心登录！',
+        //         icon: 'none',
+        //         duration: 2500,
+        //         mask: true,
+        //     })
+        // }
     },
 
     // 跳到详情页函数
@@ -224,19 +231,19 @@ Page({
         let url = '../../Companypackage/houseDetail/houseDetail'
         let id = e.currentTarget.dataset.id
         let UserLogin = this.data.UserLogin
-        if (UserLogin) {
+        // if (UserLogin) {
             wx.navigateTo({
                 url: `${url}?id=${id}`,
             })
-        } else {
-            // 提示登录
-            wx.showToast({
-                title: '你还未登录，请先到个人中心登录！',
-                icon: 'none',
-                duration: 2500,
-                mask: true,
-            })
-        }
+        // } else {
+        //     // 提示登录
+        //     wx.showToast({
+        //         title: '你还未登录，请先到个人中心登录！',
+        //         icon: 'none',
+        //         duration: 2500,
+        //         mask: true,
+        //     })
+        // }
     },
 
     // 获取公告数据

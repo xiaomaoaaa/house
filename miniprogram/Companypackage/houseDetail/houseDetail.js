@@ -48,7 +48,7 @@ Page({
         ,
         {
             'id': 'furniture',
-            'title': '其他要求',
+            'title': '其他信息',
             'value': ''
         },
         {
