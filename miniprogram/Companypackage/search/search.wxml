@@ -25,11 +25,11 @@
     </van-card>
 </view> -->
 
-<view class="recommendation-list-box" wx:for="{{HouseList}}" wx:key='key' data-url="{{item.url}}" data-id="{{item._id}}" bindtap="NavigateToDetail">
+<view class="recommendation-list-box" wx:for="{{HouseList}}" wx:key='key'  data-id="{{item.ID}}" bindtap="Navigate">
 	<view class="card">
 		<view class="card-left">
-			<image mode="scaleToFill" src="{{defaultimg1}}" wx:if="{{item.publishPlate=='RentingHouse'}}"></image>
-			<image mode="scaleToFill" src="{{defaultimg2}}" wx:else></image>
+			<image mode="scaleToFill" wx:if="{{item.mark=='RentingHouse'}}" src="../../pages/image/default.jpg" ></image>
+           <image mode="scaleToFill" wx:else src="../../pages/image/default2.jpg"></image>
 			<!-- <view class="card-tag-box card-tag card-tag-mark card-tag-bg">招聘</view> -->
 		</view>
 		<view class="card-right">
@@ -43,7 +43,7 @@
 						<view class="float-left text-grey">发布时间：{{item.publishTime}}</view>
 					</view>
 				</view>
-				<view class="card-content-box-row-bottom">
+				<view class="card-content-box-row-bottom" wx:if="{{item.mark=='RentingHouse'}}">
 					<view class="content-tag bg-tag bg-cyan light" wx:for="{{item.FormData.Tags}}" wx:for-item="tag" wx:key='key'>{{tag}}</view>
 				</view>
 			</view>

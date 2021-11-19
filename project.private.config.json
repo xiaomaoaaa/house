@@ -35,6 +35,12 @@
           "pathName": "Adminpackage/managerEntrust/managerEntrust",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "Companypackage/search/search",
+          "pathName": "Companypackage/search/search",
+          "query": "mark=SecondHouse",
+          "scene": null
         }
       ]
     }

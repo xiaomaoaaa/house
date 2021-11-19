@@ -10,7 +10,7 @@ view {
     padding: 0;
 }
 
-recommendation-list-box{
+.recommendation-list-box{
     position: relative;
     box-sizing: border-box;
     padding: 8px 16px;

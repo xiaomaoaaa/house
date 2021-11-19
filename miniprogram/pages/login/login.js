@@ -96,7 +96,7 @@ Page({
                     wx.showToast({
                         title: '你还未注册，请填写注册信息！',
                         icon: 'none',
-                        duration: 2500,
+                        duration: 1500,
                         mask: true,
                     })
                 }

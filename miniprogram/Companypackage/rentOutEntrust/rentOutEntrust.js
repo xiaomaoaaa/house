@@ -49,7 +49,7 @@ Page({
         PickerList: [{
             'id': 'HouseType',
             'title': '招聘证书类型',
-            'pickerlist': ['执业中药师', '执业西药师','执业药师双证', '初级中药师', '初级西药师','护士证书','医师证书', '其他']
+            'pickerlist': ['执业中药师', '执业西药师','双证执业药师', '初级中药师', '初级西药师','护士证书','医师证书', '其他']
         }, {
             'id': 'Invoice',
             'title': '是否要求社保交店里',
@@ -95,6 +95,14 @@ Page({
         }, {
             value: 2,
             name: '不交社保',
+            checked: false
+        }, {
+            value: 3,
+            name: '药店直聘',
+            checked: false
+        },{
+            value: 4,
+            name: '五险一金',
             checked: false
         }],
         // 标签的显示

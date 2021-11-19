@@ -11,10 +11,10 @@
 </view>
 
 
-<view class="card-box" wx:for="{{HouseList}}" data-url="{{item.url}}" data-id="{{item.ID}}" bindtap="Navigate">
+<view class="card-box" wx:for="{{HouseList}}"  data-id="{{item.ID}}" bindtap="Navigate">
     <view class="card">
         <view class="card-left">
-					<image mode="scaleToFill" wx:if="{{mark=='RentingHouse'}}" src="../../pages/image/default.jpg" ></image>
+					<image mode="scaleToFill" wx:if="{{item.mark=='RentingHouse'}}" src="../../pages/image/default.jpg" ></image>
            <image mode="scaleToFill" wx:else src="../../pages/image/default2.jpg"></image>
             <view class="card-tag-box card-tag card-tag-mark card-tag-bg" wx:if="{{item.showTag}}">火爆</view>
         </view>
@@ -27,7 +27,7 @@
 						<view class="float-left text-grey">发布时间：{{item.publishTime}}</view>
 					</view>
 				</view>
-				<view class="card-content-box-row-bottom" wx:if="{{item.FormData.publishPlate=='SecondHouse'}}">
+				<view class="card-content-box-row-bottom" wx:if="{{item.mark=='RentingHouse'}}">
 					<view class="content-tag bg-tag bg-cyan light" wx:for="{{item.FormData.Tags}}" wx:for-item="tag" wx:key='key'>{{tag}}</view>
 				</view>
 			</view>

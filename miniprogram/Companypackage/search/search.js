@@ -104,6 +104,7 @@ Page({
                     if (data) { data = data.list } else { return }
                     if (data.length > 0) {
                         for (let i = 0; i < data.length; i++) {
+                            data[i].mark=mark
                             HouseList.push(data[i])
                         }
                         that.setData({
@@ -180,8 +181,7 @@ Page({
 
     // 跳转函数
     Navigate: function (e) {
-        console.log(e, e.currentTarget.dataset.url)
-        let url = '../rentingHouseDetail/rentingHouseDetail'
+        let url = '../houseDetail/houseDetail'
         let id = e.currentTarget.dataset.id
         wx.navigateTo({
             url: `${url}?id=${id}`,
