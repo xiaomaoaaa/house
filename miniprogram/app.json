@@ -28,8 +28,10 @@
         "steps/steps",
         "secondHandHouse/secondHandHouse",
         "houseDetail/houseDetail",
+        "newhouseDetail/newhouseDetail",
         "myentrust/myentrust",
         "mycollection/mycollection",
+        "newmycollection/newmycollection",
         "search/search"
       ]
     }

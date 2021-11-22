@@ -31,8 +31,8 @@
           "scene": null
         },
         {
-          "name": "Adminpackage/managerEntrust/managerEntrust",
-          "pathName": "Adminpackage/managerEntrust/managerEntrust",
+          "name": "pages/mypage/mypage",
+          "pathName": "pages/mypage/mypage",
           "query": "",
           "scene": null
         },
@@ -40,6 +40,12 @@
           "name": "Companypackage/search/search",
           "pathName": "Companypackage/search/search",
           "query": "mark=SecondHouse",
+          "scene": null
+        },
+        {
+          "name": "Companypackage/newhouseDetail/newhouseDetail",
+          "pathName": "Companypackage/newhouseDetail/newhouseDetail",
+          "query": "id=859059a5619b01be0747743438402a67",
           "scene": null
         }
       ]

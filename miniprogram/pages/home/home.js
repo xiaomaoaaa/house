@@ -32,12 +32,29 @@ Page({
                 "url": "../../Companypackage/Contact/Contact?mark=jxjy"
             }
         ],
+        headerList2: [
+           
+            {
+                "id": "#",
+                "icon": "../image/relation.jpg",
+                "text": "证书查询",
+                "url": "../../Companypackage/Contact/Contact?mark=zscx"
+            },
+            {
+                "id": "#",
+                "icon": "../image/entrust-bar-selected.jpg",
+                "text": "继续教育",
+                "url": "../../Companypackage/Contact/Contact?mark=jxjy"
+            }
+        ],
         // 查询到的招聘数据
         HouseList: [],
         // 查询到的求职数据
         newsHouseList: [],
         // 默认公告信息
-        notice: '欢迎使用 ~'
+        notice: '欢迎使用 ~',
+        isreal:false,
+        newHouseList:[]
     },
 
     /** 
@@ -50,6 +67,7 @@ Page({
         this.IsAuthor()
         this.CompanyInfo()
         this.QueryHose()
+        this.QuerynewHose()
     },
 
     /**
@@ -228,7 +246,12 @@ Page({
     // 跳到详情页函数
     NavigateToDetail: function (e) {
         console.log(e, e.currentTarget.dataset.id)
-        let url = '../../Companypackage/houseDetail/houseDetail'
+        let url = ''
+        if(this.data.isreal){
+            url = '../../Companypackage/houseDetail/houseDetail'
+        }else{
+            url = '../../Companypackage/newhouseDetail/newhouseDetail'
+        }
         let id = e.currentTarget.dataset.id
         let UserLogin = this.data.UserLogin
         // if (UserLogin) {
@@ -275,8 +298,6 @@ Page({
             })
     },
 
-
-    // 获取房源数据列表
     QueryHose() {
         wx.showLoading({
             title: '加载中...',
@@ -340,6 +361,51 @@ Page({
 
     },
 
+     QuerynewHose() {
+        wx.showLoading({
+            title: '加载中...',
+            mask: true
+        })
+        let that = this
+        const db = wx.cloud.database()
+        db.collection('NewHouse')
+            .limit(1)
+            .field({
+                _id: true,
+               title:true,
+               publishTime: true,
+            })
+            .get({
+                success(res) {
+                    wx.hideLoading()
+                    console.log('Recommend-resQuerynewHose', res)
+                    if (res.errMsg == "collection.get:ok") {
+                        console.log(222222222222)
+                        if (res.data.length > 0) {
+                            that.setData({
+                                isreal:false,
+                                newHouseList:res.data
+                            })
+                            wx.setStorageSync('isreal', false)
+                        }else{
+                           
+                            that.setData({
+                                isreal:true
+                            })
+                            wx.setStorageSync('isreal', true)
+                        }
+                        
+                    }
+                },
+                fail: err => {
+                    wx.hideLoading()
+                    console.log('Recommend-err', err)
+                }
+            })
+
+
+
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

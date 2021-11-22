@@ -10,13 +10,18 @@ Page({
         userInfo: null,
         Adminstator: false,
         // 点击次数记录
-        TapAccount: 0
+        TapAccount: 0,
+        isreal:false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+      let isreal=  wx.getStorageSync('isreal');
+        this.setData({
+            isreal:isreal
+        })
     },
 
     /**

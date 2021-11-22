@@ -1,0 +1,24 @@
+
+
+<view class="introduce-box">
+    <view class="introduce-box-title">{{title}}</view>
+    <text class="text-grey">时间：{{publishTime}}</text>
+    <view class="introduce-box-content" >
+       {{content}}
+    </view>
+</view>
+
+<!-- /* 底部导航栏 */ -->
+<view class="footerBar">
+    <view class="footer-left float-left font-size-12">
+
+        <view class="footer-item" bindtap="Docollection">
+            <view>
+                <image src="../image/{{HasCollection?'collection':'uncollection'}}.jpg"></image>
+            </view>
+            <view wx:if='{{!HasCollection}}'>收藏</view>
+            <view wx:else style="color:#F74C50">已收藏</view>
+        </view>
+    </view>
+   
+</view>

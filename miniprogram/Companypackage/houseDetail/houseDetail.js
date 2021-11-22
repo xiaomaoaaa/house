@@ -316,7 +316,7 @@ Page({
             })
     },
 
-    // 预约看房
+    
     Appointment(e) {
         let that = this
         wx.showActionSheet({

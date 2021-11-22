@@ -1,8 +1,9 @@
+
+<view wx:if="{{isreal}}">
 <view class="select-box">
 		<view class="qiuzhi"  bindtap='NavigateToPages' data-id="sale" data-backgroundcolor="#48c0f2" data-title="发布求职信息" data-url="../../Companypackage/saleEntrust/saleEntrust"> 发布求职</view>
 		<view class="zhaopin" bindtap='NavigateToPages' data-id="rentout" data-backgroundcolor="#f9ae95" data-title="发布招聘信息" data-url="../../Companypackage/rentOutEntrust/rentOutEntrust">发布招聘</view>
 </view>
-
 <!-- 功能选项b -->
 <view class="header-box">
 	<view class="header-row">
@@ -14,7 +15,6 @@
 		</view>
 	</view>
 </view>
-
 <!-- bannner -->
 <view class="banner-box">
 	<image src="../image/banner.jpg"></image>
@@ -22,16 +22,13 @@
 	
 
 </view>
-
 <!-- 公告 -->
 <view class="noticeBar-box">
 	<van-notice-bar class="noticeBar" left-icon="volume-o" color="#181818;" backgroundColor="#ffffff" text="{{notice}}" />
 </view>
-
 <view class="recommendation-box">
 	<view class="recommendation-text">最新招聘<text data-url="../../Companypackage/secondHandHouse/secondHandHouse?mark=RentingHouse" bindtap="Navigate">更多</text></view>
 </view>
-
 <!-- 最新招聘 -->
 <view class="recommendation-list-box" wx:for="{{HouseList}}" wx:key='key' data-url="{{item.url}}" data-id="{{item._id}}" bindtap="NavigateToDetail">
 	<view class="card">
@@ -83,5 +80,35 @@
 		</view>
 	</view>
 </view>
+</view>
+<view wx:else="">
+	<!-- 功能选项b -->
+<view class="header-box">
+	<view class="header-row">
+		<view class="header-cell" wx:for="{{headerList2}}" wx:key='key' data-url="{{item.url}}" bindtap="Navigate">
+			<view>
+				<image src="{{item.icon}}"></image>
+			</view>
+			<view class="font-size-12 text-color">{{item.text}}</view>
+		</view>
+	</view>
+</view>
+<!-- 公告 -->
+<view class="noticeBar-box">
+	<van-notice-bar class="noticeBar" left-icon="volume-o" color="#181818;"  text="欢迎使用小程序！" />
+</view>
+<view class="recommendation-box">
+	<view class="recommendation-text">最新信息</view>
+</view>
+<!-- 最新消息 -->
+<view class="recommendation-list-box" wx:for="{{newHouseList}}" wx:key='key'  data-id="{{item._id}}" bindtap="NavigateToDetail">
+	<view class="card card2">
+		<view class="card2-title">{{item.title}}</view>
+		<view class="text-grey">时间：{{item.publishTime}}</view>
+	</view>
+</view>
+</view>
+
+
 <!-- 占位 -->
 <view style="height:20px;"></view>

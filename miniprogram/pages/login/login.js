@@ -6,14 +6,19 @@ Page({
      */
     data: {
         showAuth: true,
-        showform: true
+        showform: true,
+        isreal:false,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (e) {
-  
+        
+        that.setData({
+            isreal:wx.getStorageSync('isreal')
+        })
+        
     },
 
     // 授权获取用户信息

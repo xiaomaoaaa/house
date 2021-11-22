@@ -21,7 +21,7 @@
 	</view>
 	<!-- 说明 -->
 	<view class="desc">
-		<text decode='true'>说明：请填写你的真实姓名和有效的手机号，方便我们及时联系到您。</text>
+		<text decode='true'>说明：请填写你的真实姓名和有效的手机号，方便我们及时联系到您！方便第一时间通知你!</text>
 	</view>
 	<!-- 按钮 -->
 	<view class="cu-form-group" style="margin-top:10px;">
@@ -38,7 +38,7 @@
 <view class="auth-box" wx:if="{{showAuth}}">
 	<view class="card-box">
 		<view class="card-content">
-			发布信息需要先注册登录！
+			{{isreal?"发布信息需要先注册登录！":"收藏文章需要登录才可以！"}}
 			<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">确 定</button>
 			<button  bindtap="reback">取消</button>
 		</view>

@@ -1,0 +1,7 @@
+<!--pages/mycollection/mycollection.wxml-->
+<view wx:for='{{List}}' wx:key='list' data-doc="{{item._id}}" data-id="{{item.ID}}" data-type="{{item.type}}" class="list-box" bindtap="Edit">
+	<van-card  desc3="收藏时间：{{item.updateTime}}" desc4="说明：" title="{{item.title}}"  />
+	<view></view>
+</view>
+
+<view class="tips-box" wx:if='{{List.length==0}}'>暂时没有信息收藏~</view>
