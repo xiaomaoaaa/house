@@ -1,12 +1,12 @@
 <!--Adminpackage/companyInfo/companyInfo.wxml-->
 <view class="tips-box">
-	<view class="title">公司介绍(共 {{CompanyData.introduce.length?CompanyData.introduce.length:0}}/2000 字)</view>
+	<!-- <view class="title">公司介绍(共 {{CompanyData.introduce.length?CompanyData.introduce.length:0}}/2000 字)</view>
 	<view class="desc" style="color:#42A5F5;margin-top:10px;">该文案将用于在公司资质页面进行展示,不超过2000字。</view>
     <view class="desc">上次更新：{{CompanyData.editer}} {{CompanyData.phone}}</view>
     <view class="desc">上次更新时间：{{CompanyData.updatetime}}</view>
 	<view style="margin:15px 0px; ">
 		<textarea placeholder="公司介绍文案" value='{{CompanyData.introduce}}' maxlength='2000' auto-height='true' data-id="info" bindinput="InputData"/>
-	</view>
+	</view> -->
 	<view class="title">首页公告(共 {{CompanyData.notice.length?CompanyData.notice.length:0}}/100 字)</view>
 	<view class="desc" style="color:#42A5F5;margin-top:10px;">该文案将用于在首页的公告位置进行展示,不超过100字。</view>
 	<view style="margin-top:15px;">

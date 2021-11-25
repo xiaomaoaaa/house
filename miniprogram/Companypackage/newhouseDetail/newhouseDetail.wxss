@@ -51,7 +51,6 @@ page {
     border-radius: 0.2em;
 }
 
-/* 房产中介 */
 
 .houseAgent-box {
     /* width: 100%; */
@@ -102,7 +101,7 @@ page {
     /* background-color: khaki; */
 }
 
-/* 房源介绍 */
+
 
 .introduce-box {
     margin-top: 8px;

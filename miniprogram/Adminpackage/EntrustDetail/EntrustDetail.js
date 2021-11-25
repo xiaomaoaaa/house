@@ -231,9 +231,12 @@ Page({
                     duration: 2000
                 })
                 // 页面跳转到成功页面
-                wx.redirectTo({
-                    url: '../managerEntrust/managerEntrust'
+                wx.navigateBack({
+                  delta: 1,
                 })
+                // wx.redirectTo({
+                //     url: '../managerEntrust/managerEntrust'
+                // })
             },
             fail: err => {
                 wx.hideLoading()

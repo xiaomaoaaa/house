@@ -75,7 +75,7 @@ Page({
         })
     },
 
-    // 获取房源数据列表
+
     QueryHose(page) {
         wx.showLoading({
             title: '正在加载...',

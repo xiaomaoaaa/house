@@ -9,9 +9,7 @@ Page({
      */
     data: {
     
-  
-        // 房子信息
-        // 渲染详细列表
+ 
         DetialList: [{
             'id': 'name',
             'title': '联系人',
@@ -68,7 +66,7 @@ Page({
         console.log(e)
         let id = e.id
         // id = '01ace4015dfb28cc04d2e10f25885167'
-        // 查询房子详细信息
+     
         this.HoseDettail(id)
         this.setData({
             ID: id

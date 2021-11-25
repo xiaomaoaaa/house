@@ -66,7 +66,8 @@ Page({
         // 获取个人信息，如果不存在，则跳转到认证页面
         this.IsAuthor()
         this.CompanyInfo()
-        this.QueryHose()
+        this.QueryHosezhaopin()
+        this.QueryHoseqiuzhi()
         this.QuerynewHose()
     },
 
@@ -298,7 +299,7 @@ Page({
             })
     },
 
-    QueryHose() {
+    QueryHoseqiuzhi() {
         wx.showLoading({
             title: '加载中...',
             mask: true
@@ -306,11 +307,12 @@ Page({
         let that = this
         const db = wx.cloud.database()
         db.collection('Entrust')
-            .orderBy('updateTime', 'asc')
+            .orderBy('updateTime', 'desc')
             .where({
                 publish: true, 
+                publishPlate:"SecondHouse"
             })
-            .limit(20)
+            .limit(5)
             .field({
                 _id: true,
                 photoInfo: true,
@@ -330,22 +332,9 @@ Page({
                     wx.hideLoading()
                     console.log('Recommend-res', res)
                     if (res.errMsg == "collection.get:ok") {
-                        let data = res.data
-                        let HouseList = []
-                        let newsHouseList = []
-                        if (data.length > 0) {
-                            data.map((item, index) => {
-                                if (item.publishPlate == "SecondHouse") {
-                                    newsHouseList.push(item)
-                                } else {
-                                    HouseList.push(item)
-                                }
-                            })
-
-
+                        let newsHouseList = res.data
+                        if (newsHouseList.length > 0) {
                             that.setData({
-                             
-                                HouseList: HouseList,
                                 newsHouseList: newsHouseList
                             })
                         }
@@ -360,7 +349,56 @@ Page({
 
 
     },
+    QueryHosezhaopin() {
+        wx.showLoading({
+            title: '加载中...',
+            mask: true
+        })
+        let that = this
+        const db = wx.cloud.database()
+        db.collection('Entrust')
+            .orderBy('updateTime', 'desc')
+            .where({
+                publish: true, 
+                publishPlate:"RentingHouse"
+            })
+            .limit(5)
+            .field({
+                _id: true,
+                photoInfo: true,
+                title: true,
+                EntrustType: true,
+                publishTime: true,
+                publishPlate: true,
+                'FormData.area': true,
+                'FormData.Tags': true,
+                'FormData.roomStyle': true,
+                'FormData.location': true,
+                'FormData.totalPrice': true,
+                'FormData.averagePrice': true
+            })
+            .get({
+                success(res) {
+                    wx.hideLoading()
+                    console.log('Recommend-res', res)
+                    if (res.errMsg == "collection.get:ok") {
+                        let HouseList = res.data
+                        if (HouseList.length > 0) {
+                            that.setData({
+                                HouseList: HouseList,
+                            })
+                        }
+                    }
+                },
+                fail: err => {
+                    wx.hideLoading()
+                    console.log('Recommend-err', err)
+                }
+            })
 
+
+
+    },
      QuerynewHose() {
         wx.showLoading({
             title: '加载中...',

@@ -13,8 +13,6 @@ const $ = _.aggregate
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
     const openId = wxContext.OPENID
-
-    // 查询房子
     if (event.type === 'query') {
         let limit = 10
         let dbname = event.key
@@ -68,7 +66,6 @@ exports.main = async (event, context) => {
         return res
     }
 
-    // 房型筛选
     if (event.type == 'housetype') {
         let limit = 10
         let dbname = event.key

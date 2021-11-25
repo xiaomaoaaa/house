@@ -150,7 +150,6 @@ Page({
         for (let key in FormData) {
             for (let i = 0; i < DetialList.length; i++) {
                 if (DetialList[i].id == key) {
-                    // 如果是标价，则根据市买房还是出租显示不同的单位
                     if (key == 'totalPrice') {
                         let title = data.EntrustType == 'sale' ? '外标价位(单位：万元)' : '外标价位(单位：元/月)'
                         DetialList[i].title = title

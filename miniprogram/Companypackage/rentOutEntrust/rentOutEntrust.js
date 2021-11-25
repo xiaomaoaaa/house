@@ -69,7 +69,6 @@ Page({
             'name': '',
             // 人电话
             'phonenumber': '',
-            // 房子标签
             'Tags': [],
             // 招聘证书类型
             'HouseType': '',

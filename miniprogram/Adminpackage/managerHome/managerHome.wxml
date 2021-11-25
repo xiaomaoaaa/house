@@ -1,5 +1,5 @@
 <!--pages/managerHome/managerHome.wxml-->
-<view class="list-box" data-url="../managerEntrust/managerEntrust" bindtap="Navigate">
+<view class="list-box" data-url="../managerEntrust/managerEntrust" bindtap="Navigate" wx:if="{{isreal}}">
 	 招聘和求职审核、发布 
 </view>
 <view class="list-box" data-url="../companyInfo/companyInfo" bindtap="Navigate">
