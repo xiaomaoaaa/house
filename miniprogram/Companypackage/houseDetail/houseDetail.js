@@ -196,12 +196,12 @@ Page({
 
     // 打电话
     CallPhone(e) {
-        console.log(e, e.currentTarget.dataset.phone)
-        let phoneNumber = e.currentTarget.dataset.phone
-        let displayPhone = this.data.displayPhone
+       
+        let phoneNumber = this.data.DetialList[1].value
+        // let displayPhone = this.data.displayPhone
         wx.showModal({
             title: '温馨提示',
-            content: `是否拨打${displayPhone}号码？`,
+            content: `是否拨打${phoneNumber}号码？`,
             confirmText: '确定拨打',
             confirmColor: '#0081ff',
             cancelText: '取消',
@@ -316,28 +316,8 @@ Page({
 
     
     Appointment(e) {
-        let that = this
-        wx.showActionSheet({
-            itemList: ['联系经纪人', '联系在线客服'],
-            success(res) {
-                console.log(res.tapIndex)
-                if (res.tapIndex == 0) {
-                    // 打电话
-                    that.CallPhone(e)
-                }
-                if (res.tapIndex == 1) {
-                    wx.showToast({
-                      title: '提示:请直接点击 “个人中心” 页面的客服按钮,即可连通在线客服。',
-                      icon:'none',
-                      mask:true,
-                      duration:2000
-                    })
-                }
-            },
-            fail(res) {
-                console.log(res.errMsg)
-            }
-        })
+      
+        this.CallPhone(e)
 
     },
 

@@ -39,8 +39,8 @@
 				<view class="card-content-box-row-top">
 			
 					<view class="content-row">
-						<view class="float-left text-grey">所在城市：{{item.FormData.location}}</view>
-						<view class="float-left text-grey">发布时间：{{item.publishTime}}</view>
+						<view class="text-grey">所在城市：{{item.FormData.location}}</view>
+						<view class="text-grey">发布时间：{{item.publishTime}}</view>
 					</view>
 				</view>
 				<view class="card-content-box-row-bottom" wx:if="{{item.mark=='RentingHouse'}}">
