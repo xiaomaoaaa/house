@@ -8,7 +8,7 @@ Page({
     data: {
 
 
-
+        searchtext:"",
         // 查询到的数据
         HouseList: [],
         // 默认数据总数
@@ -85,12 +85,10 @@ Page({
         let HouseList = this.data.HouseList
         let searchtext = this.data.searchtext
         let mark = this.data.mark
-
-
         wx.cloud.callFunction({
             name: 'HouseInfo',
             data: {
-                type: "query",
+                type: "search",
                 key: mark,
                 page: page,
                 searchtext: searchtext
@@ -100,8 +98,8 @@ Page({
                 console.log('myentrust-res', res)
                 if (res.errMsg == "cloud.callFunction:ok") {
                     // 显示数据
-                    let data = res.result
-                    if (data) { data = data.list } else { return }
+                    let data = res.result.data
+                  
                     if (data.length > 0) {
                         for (let i = 0; i < data.length; i++) {
                             data[i].mark=mark

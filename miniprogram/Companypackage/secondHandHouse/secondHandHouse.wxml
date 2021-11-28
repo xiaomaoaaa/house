@@ -11,7 +11,7 @@
 </view>
 
 
-<view class="card-box" wx:for="{{HouseList}}"  data-id="{{item.ID}}" bindtap="Navigate">
+<view class="card-box" wx:for="{{HouseList}}"  data-id="{{item._id}}" bindtap="Navigate">
     <view class="card">
         <view class="card-left">
 					<image mode="scaleToFill" wx:if="{{item.mark=='RentingHouse'}}" src="../../pages/image/default.jpg" ></image>
@@ -25,6 +25,8 @@
 					<view class="content-row">
 						<view class="text-grey">所在城市：{{item.FormData.location}}</view>
 						<view class="text-grey">发布时间：{{item.publishTime}}</view>
+						<view class="text-grey">证书类型：{{item.FormData.HouseType}}</view>
+						<view class="text-grey">是否有社保：{{item.FormData.Invoice}}</view>
 					</view>
 				</view>
 				<view class="card-content-box-row-bottom" wx:if="{{item.mark=='RentingHouse'}}">

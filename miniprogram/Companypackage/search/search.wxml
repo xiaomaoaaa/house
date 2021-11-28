@@ -25,7 +25,7 @@
     </van-card>
 </view> -->
 
-<view class="recommendation-list-box" wx:for="{{HouseList}}" wx:key='key'  data-id="{{item.ID}}" bindtap="Navigate">
+<view class="recommendation-list-box" wx:for="{{HouseList}}" wx:key="index" data-id="{{item._id}}" bindtap="Navigate">
 	<view class="card">
 		<view class="card-left">
 			<image mode="scaleToFill" wx:if="{{item.mark=='RentingHouse'}}" src="../../pages/image/default.jpg" ></image>

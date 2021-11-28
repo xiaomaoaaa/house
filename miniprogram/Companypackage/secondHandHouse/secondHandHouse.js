@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        HouseType: '',
+        HouseType: '0',
         HouseTypeList: [{
             text: '所有证书类型',
             value: '0'
@@ -102,7 +102,8 @@ Page({
     DocCount() {
         let that = this
         const db = wx.cloud.database()
-        db.collection('SecondHouse').count({
+        let mark = this.data.mark
+        db.collection(mark).count({
             success(res) {
                 console.log('count-res', res)
                 if (res.errMsg == "collection.count:ok") {
@@ -117,8 +118,9 @@ Page({
             }
         })
     },
-
+   
     QueryHose(page, type) {
+        console.log(type+page)
         wx.showLoading({
             title: '正在加载...',
             mask: true
@@ -128,11 +130,18 @@ Page({
         let Invoice = this.data.Invoice
         let HouseType = this.data.HouseType
         let mark=this.data.mark
+        console.log( {
+            type: type,
+            key: mark,
+            page: page,
+            Invoice: Invoice,
+            HouseType:HouseType
+        })
         wx.cloud.callFunction({
             name: 'HouseInfo',
             data: {
                 type: type,
-                key: that.data.mark,
+                key: mark,
                 page: page,
                 Invoice: Invoice,
                 HouseType:HouseType
@@ -142,8 +151,7 @@ Page({
                 console.log('myentrust-res', res)
                 if (res.errMsg == "cloud.callFunction:ok") {
                     // 显示数据
-                    let data = res.result
-                    if (data) { data = data.list } else { return }
+                    let data = res.result.data
                     if (data.length > 0) {
                         for (let i = 0; i < data.length; i++) {
                             data[i].mark=mark
@@ -188,7 +196,6 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function (e) {
-        console.log(e, '666')
         wx.showNavigationBarLoading()
         // 初始化数据
         this.setData({

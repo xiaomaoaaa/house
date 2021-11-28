@@ -125,37 +125,26 @@ Page({
                         that.SetLisDdata(data)
                     } else {
                         wx.showToast({
-                            title: '网络错误,请返回重新打开',
+                            title: '网络错误,请返回重新打开1',
                             mask: true,
                             icon: 'none'
                         })
-                        wx.navigateBack({
-                            delta: -1
-                        })
+                        // wx.navigateBack({
+                        //     delta: -1
+                        // })
                     }
                 } else {
                     wx.showToast({
-                        title: '网络错误,请返回重新打开',
+                        title: '网络错误,请返回重新打开2',
                         mask: true,
                         icon: 'none'
                     })
-                    wx.navigateBack({
-                        delta: -1
-                    })
+                    // wx.navigateBack({
+                    //     delta: -1
+                    // })
                 }
             },
-            fail(err) {
-                wx.hideLoading()
-                console.log('detail-err', err)
-                wx.showToast({
-                    title: '网络错误,请返回重新打开',
-                    mask: true,
-                    icon: 'none'
-                })
-                wx.navigateBack({
-                    delta: -1
-                })
-            }
+         
         })
     },
 

@@ -47,6 +47,12 @@
           "pathName": "Companypackage/newhouseDetail/newhouseDetail",
           "query": "id=859059a5619b01be0747743438402a67",
           "scene": null
+        },
+        {
+          "name": "Companypackage/search/search",
+          "pathName": "Companypackage/search/search",
+          "query": "",
+          "scene": null
         }
       ]
     }

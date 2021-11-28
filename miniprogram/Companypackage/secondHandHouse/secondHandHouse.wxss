@@ -55,14 +55,14 @@ view {
 
 .card-content-box {
     width: 100%;
-    height: 70px;
-    margin-top: 12px;
+  
+
     /* background-color: #ee0a24; */
 }
 
 .card-content-box-row-top {
     width: 100%;
-    height: 40px;
+
     /* background-color: #9e2260; */
 }
 
@@ -75,7 +75,7 @@ view {
 
 .content-row {
     width: 100%;
-    height: 20px;
+   
     /* background-color: #19b9a4; */
 }
 

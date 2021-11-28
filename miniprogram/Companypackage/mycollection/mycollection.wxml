@@ -1,7 +1,29 @@
 <!--pages/mycollection/mycollection.wxml-->
-<view wx:for='{{List}}' wx:key='list' data-doc="{{item._id}}" data-id="{{item.ID}}" data-type="{{item.type}}" class="list-box" bindtap="Edit">
-	<van-card desc1="所在城市：{{item.location}}" desc2="证书类型：{{item.HouseType}} {{item.publishPlate=='SecondHouse'?'(求职)':'(招聘)'}}" desc3="推荐时间：{{item.updateTime}}" desc4="说明：" title="{{item.title}}" thumb="{{item.publishPlate=='SecondHouse'?'../../pages/image/default2.jpg':'../../pages/image/default1.jpg'}}" />
+<!-- <view wx:for='{{List}}' wx:key='list' data-doc="{{item._id}}" data-id="{{item.ID}}" data-type="{{item.type}}" class="list-box" bindtap="Edit">
+	<van-card desc1="所在城市：{{item.location}}" desc2="证书类型：{{item.HouseType}} {{item.publishPlate=='SecondHouse'?'(求职)':'(招聘)'}}" desc3="推荐时间：{{item.updateTime}}" desc4="说明：" title="{{item.title}}" thumb="{{item.publishPlate=='SecondHouse'?'../image/default2.jpg':'../image/default1.jpg'}}" />
 	<view></view>
+</view> -->
+<view class="card-box" wx:for="{{List}}"  data-id="{{item.ID}}" data-doc="{{item._id}}" bindtap="Edit" wx:key="index" data-type="{{item.type}}">
+    <view class="card" >
+        <view class="card-left">
+					<image mode="scaleToFill" wx:if="{{item.publishPlate=='RentingHouse'}}" src="../../pages/image/default.jpg" ></image>
+           <image mode="scaleToFill" wx:else src="../../pages/image/default2.jpg"></image>
+            <view class="card-tag-box card-tag card-tag-mark card-tag-bg" wx:if="{{item.showTag}}">火爆</view>
+        </view>
+        <view class="card-right">
+			<view class="card-title">姓名:{{item.title}}</view>
+			<view class="card-content-box">
+				<view class="card-content-box-row-top">
+					<view class="content-row">
+						<view class="text-grey">所在城市：{{item.location}}</view>
+						<view class="text-grey">发布时间：{{item.updateTime}}</view>
+						<view class="text-grey">证书类型：{{item.HouseType}}</view>
+					</view>
+				</view>
+			
+			</view>
+		</view>
+    </view>
 </view>
 
 <view class="tips-box" wx:if='{{List.length==0}}'>暂时没有信息收藏~</view>

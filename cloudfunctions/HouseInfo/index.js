@@ -13,144 +13,72 @@ const $ = _.aggregate
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
     const openId = wxContext.OPENID
-    if (event.type === 'query') {
-        let limit = 10
-        let dbname = event.key
+    let limit = 10
+        let key = event.key
         let page = event.page
+        let Invoice=event.Invoice
+        let HouseType=event.HouseType
+        console.log(Invoice)
+        console.log(HouseType)
+    if (event.type === 'search') {
         let matchObj=null
         let searchtext=event.searchtext?event.searchtext:''
         if(searchtext){
             matchObj={
-                'EntrustInfo.publish': true,
-                'EntrustInfo.FormData.location':db.RegExp({
+                'publish': true,
+                'publishPlate':key,
+                'FormData.location':db.RegExp({
                     regexp: searchtext,
                     options: 'i',
                   })
             }
         }else{
             matchObj={
-                'EntrustInfo.publish': true,
+                'publish': true,
             }  
         }
-        let res = await db.collection(dbname).aggregate()
+        let res = await db.collection('Entrust') .orderBy('updateTime', 'desc')
+        .where(
+            matchObj
+        )
             .skip(page)
-            .limit(limit)
-            .sort({
-                updateTime: -1
-            })
-            .lookup({
-                from: 'Entrust',
-                localField: 'ID',
-                foreignField: '_id',
-                as: 'EntrustInfo',
-            })
-            .match(matchObj)
-            .project({
-                'ID': true,
-                'updateTime': true,
-                'EntrustInfo.title': true,
-                'EntrustInfo.FormData.HouseType': true,
-                'EntrustInfo.FormData.location': true,
-                'EntrustInfo.FormData.Invoice': true,
-                'EntrustInfo.FormData.Tags': true,
-                'EntrustInfo.publishTime': true
-            })
-            .replaceRoot({
-                newRoot: $.mergeObjects([$.arrayElemAt(['$EntrustInfo', 0]), '$$ROOT'])
-            })
-            .project({
-                '_id': false,
-                'EntrustInfo': false
-            })
-            .end()
+            .limit(limit).get()
         return res
+    }else{
+        let matchObj=null
+        if(Invoice!=='0'&&HouseType!=='0'){
+            matchObj={
+            'publish': true,
+            'publishPlate':key,
+            'FormData.HouseType': HouseType,
+            'FormData.Invoice': Invoice}
+            
+        
+        }else if(Invoice!=='0'){
+            matchObj={
+                'publish': true,
+                'publishPlate':key,
+                'FormData.Invoice': Invoice}
+        }
+        else if(HouseType!=='0'){
+            matchObj={
+                'publish': true,
+                'publishPlate':key,
+                'FormData.HouseType': HouseType}
+        }else{
+            matchObj={
+                'publish': true,
+                'publishPlate':key,
+        }
+    
     }
-
-    if (event.type == 'housetype') {
-        let limit = 10
-        let dbname = event.key
-        let page = event.page
-        let HouseType= event.HouseType
-       
-        let res = await db.collection(dbname).aggregate()
-            .skip(page)
-            .limit(limit)
-            .sort({
-                updateTime: -1
-            })
-            .lookup({
-                from: 'Entrust',
-                localField: 'ID',
-                foreignField: '_id',
-                as: 'EntrustInfo',
-            })
-            .match({
-                'EntrustInfo.publish': true,
-                'EntrustInfo.FormData.HouseType': HouseType
-            })
-            .project({
-                'ID': true,
-                'updateTime': true,
-                'EntrustInfo.title': true,
-                'EntrustInfo.FormData.HouseType': true,
-                'EntrustInfo.FormData.location': true,
-                'EntrustInfo.FormData.Invoice': true,
-                'EntrustInfo.FormData.Tags': true,
-                'EntrustInfo.publishTime': true
-            })
-            .replaceRoot({
-                newRoot: $.mergeObjects([$.arrayElemAt(['$EntrustInfo', 0]), '$$ROOT'])
-            })
-            .project({
-                '_id': false,
-                'EntrustInfo': false
-            })
-            .end()
-            console.log(res)
-        return res
-    }
-
-    // 价格筛选
-    if (event.type == 'invoice') {
-        let limit = 10
-        let page = 0
-        let dbname = event.key
-        let Invoice= event.Invoice
-        let res = await db.collection(dbname).aggregate()
-            .skip(page)
-            .limit(limit)
-            .sort({
-                updateTime: -1
-            })
-            .lookup({
-                from: 'Entrust',
-                localField: 'ID',
-                foreignField: '_id',
-                as: 'EntrustInfo',
-            })
-            .match({
-                'EntrustInfo.publish': true,
-                'EntrustInfo.FormData.Invoice':Invoice
-            })
-            .project({
-                'ID': true,
-                'updateTime': true,
-                'EntrustInfo.title': true,
-                'EntrustInfo.FormData.roomStyle': true,
-                'EntrustInfo.FormData.location': true,
-                'EntrustInfo.FormData.Tags': true,
-                'EntrustInfo.FormData.Invoice': true,
-                'EntrustInfo.publishTime': true
-            })
-            .replaceRoot({
-                newRoot: $.mergeObjects([$.arrayElemAt(['$EntrustInfo', 0]), '$$ROOT'])
-            })
-            .project({
-                '_id': false,
-                'EntrustInfo': false
-            })
-            .end()
-        return res
-    }
-
+    let res = await db.collection('Entrust').orderBy('updateTime', 'desc')
+            .where(
+                matchObj
+            )
+                .skip(page)
+                .limit(limit).get()
+            
+            return res
+}
 }
