@@ -70,7 +70,7 @@ Page({
             // 人电话
             'phonenumber': '',
             'Tags': [],
-            // 招聘证书类型
+            // 证书类型
             'HouseType': '',
             // 是否要求社保交店里
             'Invoice': '',
@@ -108,14 +108,17 @@ Page({
         displayTags: '',
         // 临时变量
         templeCheckbox: [],
-        templeTags: []
+        templeTags: [],
+        isreal:true
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (e) {
-        console.log('eeeee', e, e.title)
+        this.setData({
+            isreal:wx.getStorageSync("isreal")  
+        })
         // 修改导航栏标题
         wx.setNavigationBarTitle({
             title: e.title

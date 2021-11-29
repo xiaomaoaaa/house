@@ -78,13 +78,17 @@ Page({
             // 其他信息
             'furniture': '',
         },
+        isreal:true
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (e) {
-        console.log('eeeee', e, e.title)
+    
+        this.setData({
+            isreal:wx.getStorageSync("isreal")  
+        })
         // 修改导航栏标题
         wx.setNavigationBarTitle({
             title: e.title

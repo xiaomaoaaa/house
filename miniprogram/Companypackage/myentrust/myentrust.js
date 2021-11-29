@@ -5,9 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        // 已发布的求职信息
         saleEntrustList:[],
-         // 已发布的招聘信息
         rentOutEntrustList: []
     },
 

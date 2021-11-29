@@ -71,14 +71,17 @@ Page({
         // 发布的板块
         publishPlateList: [ 'SecondHouse', 'RentingHouse'],
         publishPlate: '',
-        plate: ''
+        plate: '',
+        isreal:true
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (e) {
-        console.log(e, formatTime(new Date()))
+        this.setData({
+            isreal:wx.getStorageSync("isreal")  
+        })
         let id = e.id
         // id = 'b040a67a5dfb2a4304d36b315da2038a'
         this.EntrustDetail(id)

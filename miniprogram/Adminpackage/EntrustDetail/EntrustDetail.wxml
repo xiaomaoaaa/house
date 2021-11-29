@@ -1,6 +1,6 @@
 <!--Adminpackage/EntrustDetail/EntrustDetail.wxml-->
 
-<view>
+<view wx:if="{{isreal}}">
 	<view class="list-box">
 		<view class="title">{{publishPlate=="RentingHouse"?"招聘":"求职"}}详细信息：</view>
 		<view class="desc" wx:for="{{DetialList}}" wx:key='key' data-id="{{item['_id']}}" bindtap="Navigate">{{item.title}}：<text class="text-blue">{{item.value?item.value:'无'}}</text></view>

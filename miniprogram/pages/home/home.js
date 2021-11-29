@@ -47,9 +47,7 @@ Page({
                 "url": "../../Companypackage/Contact/Contact?mark=jxjy"
             }
         ],
-        // 查询到的招聘数据
         HouseList: [],
-        // 查询到的求职数据
         newsHouseList: [],
         // 默认公告信息
         notice: '欢迎使用 ~',

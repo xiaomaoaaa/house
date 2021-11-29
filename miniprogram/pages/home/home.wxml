@@ -29,7 +29,6 @@
 <view class="recommendation-box">
 	<view class="recommendation-text">最新招聘<text data-url="../../Companypackage/secondHandHouse/secondHandHouse?mark=RentingHouse" bindtap="Navigate">更多</text></view>
 </view>
-<!-- 最新招聘 -->
 <view class="recommendation-list-box" wx:for="{{HouseList}}" wx:key='key' data-url="{{item.url}}" data-id="{{item._id}}" bindtap="NavigateToDetail">
 	<view class="card">
 		<view class="card-left">
@@ -57,7 +56,6 @@
 <view class="recommendation-box">
 	<view class="recommendation-text">最新求职<text data-url="../../Companypackage/secondHandHouse/secondHandHouse?mark=SecondHouse" bindtap="Navigate">更多</text></view>
 </view>
-<!-- 最新求职 -->
 <view class="recommendation-list-box" wx:for="{{newsHouseList}}" wx:key='key' data-url="{{item.url}}" data-id="{{item._id}}" bindtap="NavigateToDetail">
 	<view class="card">
 		<view class="card-left">
