@@ -38,7 +38,7 @@
 <view class="auth-box" wx:if="{{showAuth}}">
 	<view class="card-box">
 		<view class="card-content">
-			{{isreal?"发布信息需要先注册登录！":"收藏文章需要登录才可以！"}}
+			{{isreal?"发布信息需要先注册登录！":"收藏文章需要登录才可以！，获取你的信息方便联系！"}}
 			<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">确 定</button>
 			<button  bindtap="reback">取消</button>
 		</view>

@@ -1,4 +1,4 @@
-// Adminpackage/EntrustDetail/EntrustDetail.js
+
 const {
     formatTime
 } = require("../../utils/util.js")
@@ -73,7 +73,8 @@ Page({
         itemList:  ['求职', '招聘'],
         // 发布的板块
         publishPlateList: ['SecondHouse', 'RentingHouse'],
-        publishPlate: ''
+        publishPlate: '',
+        isreal:true
     },
 
     /**
@@ -81,7 +82,13 @@ Page({
      */
     onLoad: function (e) {
         let id = e.id
-        this.EntrustDetail(id)
+        this.setData({
+            isreal:wx.getStorageSync("isreal")  
+        })
+        if(this.data.isreal){
+            this.EntrustDetail(id)
+        }
+        
     },
 
     /**
@@ -238,7 +245,7 @@ Page({
                 console.log('changeEntrust-res', res)
                 if (res.errMsg == "cloud.callFunction:ok") {
                     wx.hideLoading()
-                    // 跳转到审核页面
+               
                     if (res.result.errMsg == 'collection.update:ok' && res.result.stats.updated > 0) {
                         // 进行确认提示
                         wx.showModal({

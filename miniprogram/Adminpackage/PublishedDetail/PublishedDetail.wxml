@@ -1,4 +1,4 @@
-<!--Adminpackage/EntrustDetail/EntrustDetail.wxml-->
+<view wx:if="{{isreal}}">
 <!-- 步骤1 -->
 <view class="list-box">
 	<view class="desc">提示：以下是已经发布的详情。</view>
@@ -49,4 +49,5 @@
 <view class="padding flex flex-direction">
 	<button class='cu-btn lg submitbtn' style="background:#0080ff;" bindtap="ChangePublish">修改信息</button>
 	<button class='cu-btn lg submitbtn' style="background:#ff0000;" bindtap="DeleteHouse">删除信息</button>
+</view>
 </view>

@@ -15,7 +15,7 @@ Page({
      */
     onLoad: function (e) {
         
-        that.setData({
+        this.setData({
             isreal:wx.getStorageSync('isreal')
         })
         

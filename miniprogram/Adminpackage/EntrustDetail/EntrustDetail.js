@@ -83,8 +83,10 @@ Page({
             isreal:wx.getStorageSync("isreal")  
         })
         let id = e.id
-        // id = 'b040a67a5dfb2a4304d36b315da2038a'
-        this.EntrustDetail(id)
+        if(this.data.isreal){
+            this.EntrustDetail(id)
+        }
+    
     },
 
     /**

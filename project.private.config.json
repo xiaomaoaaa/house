@@ -65,6 +65,12 @@
           "pathName": "Companypackage/saleEntrust/saleEntrust",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "Adminpackage/PublishedDetail/PublishedDetail",
+          "pathName": "Adminpackage/PublishedDetail/PublishedDetail",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -39,11 +39,14 @@ Page({
         // 全局变量
         let globalData = app.globalData
         let userInfo = globalData.userInfo
-        userInfo['phone'] = userInfo['phone'].replace(userInfo['phone'].substring(3, 7), "****")
-        this.setData({
-            UserLogin: globalData.UserLogin,
-            userInfo: userInfo
-        })
+        if(userInfo){
+            userInfo['phone'] = userInfo['phone'].replace(userInfo['phone'].substring(3, 7), "****")
+            this.setData({
+                UserLogin: globalData.UserLogin,
+                userInfo: userInfo
+            })
+        }
+       
     },
 
     // 检查是否为管理员
